@@ -15,7 +15,12 @@
     Vue.use(Vuex);
     const store = new Vuex.Store({
         namespaced: true,
-        state: {},
+        state: {
+            databases,
+            components: dbs.components,
+            tables: dbs.tables,
+            dbname,
+        },
         mutations: {},
         actions: {},
         getters: {}

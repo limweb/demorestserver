@@ -14,6 +14,9 @@ class SysController
      */
     public function getRoutes( )
     {
+
+        $url = $_SERVER['HTTP_HOST'].$this->server->root.'/';
+        $url = replaceslag($url);
         if ($this->server->mode == 'debug') {
             echo '<style> .divline { width:100%; text-align:center; border-bottom: 1px dashed #000; line-height:0.1em; margin:10px 0 20px; } 
             </style><center><table><thead><tr><td><b>Route</b></td><td><b>Controller</b></td><td><b>Method</b></td><td><b>$args</b></td><td>null</td><td><b>@noAuth</b></td></tr></thead><tbody>';
@@ -25,7 +28,7 @@ class SysController
                 switch ($routekey) {
                     case 'GET':
                         foreach ($routes as $key => $value) {
-                                echo "<tr><td>".($routekey =='GET' ? '<a href="http://'.$_SERVER['HTTP_HOST'].$this->server->root.'/'.$key.'">'.( empty($key) ? '/' : $key ).'</a>'    : $key)."</td><td>$value[0]</td><td>$value[1]</td><td><pre>".json_encode($value[2])."</pre></td><td>".json_encode($value[3])."</td><td>".json_encode($value[4])."</td></tr>";
+                                echo "<tr><td>".($routekey =='GET' ? '<a href="http://'.$url.$key.'">'.( empty($key) ? '/' : $key ).'</a>'    : $key)."</td><td>$value[0]</td><td>$value[1]</td><td><pre>".json_encode($value[2])."</pre></td><td>".json_encode($value[3])."</td><td>".json_encode($value[4])."</td></tr>";
                         }
                         break;
                     case 'POST':

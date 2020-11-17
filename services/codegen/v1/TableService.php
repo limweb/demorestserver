@@ -192,7 +192,8 @@ class TableService
     }
     
     public function getdbname(){
-        return $dbname = $this->camelize($this->config->dbconfig['database']);       
+        return $dbname = $this->config->dbconfig['database'];
+        // return $dbname = $this->camelize($this->config->dbconfig['database']);       
     }
 
     public function todbjson(){

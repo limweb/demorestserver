@@ -39,3 +39,11 @@ function includeDirClass($path,$basePath = '',$server='')
         }
     } 
 }
+
+function replaceslag($str){
+      return  str_replace(['//'],'/',$str);
+}
+
+function replacebslag($str){
+      return  str_replace(['\\\\'],'\\',$str);
+}
