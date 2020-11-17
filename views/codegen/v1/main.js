@@ -20,6 +20,7 @@
             components: dbs.components,
             tables: dbs.tables,
             dbname,
+            table:'',
         },
         mutations: {},
         actions: {},

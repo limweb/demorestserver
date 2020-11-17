@@ -52,19 +52,31 @@ export default {
               <li class="nav-item">
                 <router-link to="/login" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inbox</p>
+                  <p>LOGIN PAGE</p>
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/login" class="nav-link">
+                <router-link to="/models" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Compose</p>
+                  <p>MODELS</p>
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/login" class="nav-link">
+                <router-link to="/services" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Read</p>
+                  <p>SERVICES</p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/controllers" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>CONTROLLERS</p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/vue2crud" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>VUE2-CRUD</p>
                 </router-link>
               </li>
             </ul>

@@ -18,8 +18,8 @@ export default {
           <option value="">---- select-database-----</option>
           <option v-for="(db,idx) in $store.state.databases" :value="db.Database">{{db.Database}}</option>
         </select>
-        &nbsp;&nbsp;
-        <select>
+        &nbsp;&nbsp;TB:{{this.$store.state.table}}&nbsp;&nbsp;
+        <select v-model="$store.state.table" >
           <option value="">--- select-table-----</option>
           <option v-for="(tb,idx) in $store.state.tables" :value="tb.table">{{tb.table}}</option>
         </select>
@@ -40,12 +40,12 @@ export default {
     methods: {
         selectdb(){
           let url = '/codegen/v1/tables/'+ this.$store.state.dbname;
+          this.$store.state.table = '';
           axios.get(url).then(rs=>{
              this.$store.state.components = rs.data.datas.components
              this.$store.state.tables = rs.data.datas.tables
           }).catch(console.log);
         },
-
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
