@@ -46,20 +46,20 @@ export default {
               <!-- Message End -->
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
+            <router-link to="/profile" class="dropdown-item">
              <i class="far fa-address-card mr-2"></i> Profile
               <span class="float-right text-muted text-sm">&nbsp;</span>
-            </a>
+            </router-link>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
+            <router-link to="/messages" class="dropdown-item">
               <i class="fas fa-envelope mr-2"></i> 4 new messages
               <span class="float-right text-muted text-sm">&nbsp;</span>
-            </a>
+            </router-link>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
+            <router-link to="/login" class="dropdown-item">
               <i class="fas fa-sign-out-alt mr-2"></i> Logout
               <span class="float-right text-muted text-sm">&nbsp;</span>
-            </a>
+            </router-link>
         </li>
     </ul>
   </nav>`, 

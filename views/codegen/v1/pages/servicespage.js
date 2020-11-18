@@ -4,12 +4,12 @@ export default {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Blank Page</h1>
+            <b>Gen Services Page</b>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
+              <li class="breadcrumb-item"><router-link to="/home">Home</router-link></li>
+              <li class="breadcrumb-item active">{{$route.name}}</li>
             </ol>
           </div>
         </div>
@@ -26,11 +26,11 @@ export default {
               <i class="fas fa-times"></i></button>
           </div>
         </div>
-        <div class="card-body">
-          Start creating your amazing application!
+         <div class="card-body" style="height: 70vh;">
+           
         </div>
         <div class="card-footer">
-          Footer
+           
         </div>
       </div>
     </section>

@@ -192,7 +192,7 @@ export default {
         <div class="bg-success" style="position: fixed;bottom: 0px;width: inherit;text-align:center;height: 35px; padding-top: 5px;">
           <a href="#" style="background-color: rgb(0, 166, 90);">
             <i class="fa fa-star-o" style="color: rgb(255, 255, 255);"></i>
-            <span style="color: rgb(255, 255, 255);">AccMan Templates</span>
+            <span style="color: rgb(255, 255, 255);">AccMan Templates v0.0.1</span>
           </a>
         </div>
     </aside>
