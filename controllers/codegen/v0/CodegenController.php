@@ -10,7 +10,7 @@ use	Illuminate\Database\Capsule\Manager as Capsule;
 use	Carbon\Carbon;
 
 class CodegenController  {
-    
+    public $viewpath = '/codegen/v0';
     private $componemts = [
         "label",
         "text_span",
@@ -4561,7 +4561,7 @@ class CodegenController  {
                        this.codemasterdetails = [];
                     }
                     console.log('---genmasterdetail---',md,idx);
-                    <?php include(SRVPATH.'/views/codegen/v0/masterdetail.php'); ?>
+                    <?php include(SRVPATH.'/views'.$this->viewpath.'/masterdetail.php'); ?>
                     console.log('this.codegen--->',this.codegen);
                     
                 },
