@@ -76,7 +76,7 @@ export default {
     }, 
     methods: {
      login(){
-        this.$router.push('/indexx');
+        this.$router.push('/index');
       }
 
     }, 

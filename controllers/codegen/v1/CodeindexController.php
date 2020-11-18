@@ -15,7 +15,7 @@ class CodeindexController  extends CodegenbaseCointroller {
 
 /**
 *@noAuth
-*@url GET /indexx
+*@url GET /index
 *----------------------------------------------
 *FILE NAME:  CodeindexController.php gen for Servit Framework Controller
 *Created by: Tlen<limweb@hotmail.com>
