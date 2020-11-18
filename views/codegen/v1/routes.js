@@ -19,6 +19,10 @@ import Servicespage from "./pages/servicespage.js";
 import Userrecords from "./pages/userrecords.js";
 import Messages from "./pages/messages.js";
 import Profile from "./pages/profile.js";
+import Forgotpass from "./pages/forgotpass.js";
+import Register from "./pages/register.js";
+import Authfacebook from "./pages/authfacebook.js";
+import Authgoogle from "./pages/authgoogle.js";
 
 
 export default [
@@ -44,4 +48,8 @@ export default [
     { path: '/backendall', name: 'Backendall', component: Backendall ,meta: { requiresAuth: false,layout: 'mainlayout' } },
     { path: '/messages', name: 'Messages', component: Messages ,meta: { requiresAuth: false,layout: 'mainlayout' } },
     { path: '/profile', name: 'Profile', component: Profile ,meta: { requiresAuth: false,layout: 'mainlayout' } },
+    { path: '/forgotpass', name: 'Forgotpass', component: Forgotpass ,meta: { requiresAuth: false,layout: 'mainlayout' } },
+    { path: '/register', name: 'Register', component: Register ,meta: { requiresAuth: false,layout: 'mainlayout' } },
+    { path: '/authfacebook', name: 'Authfacebook', component: Authfacebook ,meta: { requiresAuth: false,layout: 'mainlayout' } },
+    { path: '/authgoogle', name: 'Authgoogle', component: Authgoogle ,meta: { requiresAuth: false,layout: 'mainlayout' } },
 ]

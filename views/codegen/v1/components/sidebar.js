@@ -12,7 +12,7 @@ export default {
                     <img src="../../dist/img/user1-128x128.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Accman Co.,Ltd</a>
+                    <router-link to="/profile" class="d-block">Accman Co.,Ltd</router-link>
                 </div>
             </div>
             <nav class="mt-2" style="overflow: hidden;">

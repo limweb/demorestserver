@@ -39,18 +39,18 @@ export default {
       </form>
       <div class="social-auth-links text-center mb-3">
         <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
+        <router-link to="/authfacebook" class="btn btn-block btn-primary">
           <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
+        </router-link>
+        <router-link to="/authgoogle" class="btn btn-block btn-danger">
           <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
+        </router-link>
       </div>
       <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
+        <router-link to="/forgotpass">I forgot my password</router-link>
       </p>
       <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <router-link to="/register" class="text-center">Register a new membership</router-link>
       </p>
     </div>
   </div>`, 
