@@ -32,5 +32,4 @@ public function index(){
     include_once SRVPATH.'/views'.$this->viewpath.'/index.php';
 }
 
-
 }
