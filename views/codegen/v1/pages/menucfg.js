@@ -4,7 +4,7 @@ export default {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <b>Menuconfiguration</b>
+            <b>Menu Configuration</b>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
