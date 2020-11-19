@@ -12,7 +12,26 @@ use	Carbon\Carbon;
 
 class TableController {
     
+    /**
+    *@noAuth
+    *@url GET /testdb
+    *----------------------------------------------
+    *FILE NAME:  TableController.php gen for Servit Framework Controller
+    *Created by: Tlen<limweb@hotmail.com>
+    *DATE:  2020-11-17(Tue)  02:23:02 
     
+    *----------------------------------------------
+    */
+    public function testdb(){
+         try {
+                Capsule::connection('default')->table(Capsule::raw('DUAL'))->first([Capsule::raw(1)]);
+                return true;
+            } catch(\Exception $e) {
+                echo '<center>การเชื่อมต่อ DB ผิดพลาด กรุณาตั้งค่าใน .env ใหม่ </center>';
+                exit();
+        }
+    }
+
     /**
     *@noAuth
     *@url GET /databases

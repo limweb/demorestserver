@@ -57,6 +57,12 @@ export default {
                         </router-link>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
+                                <router-link to="/crud" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>CRUD</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
                                 <router-link to="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>-----------</p>

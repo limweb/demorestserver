@@ -63,6 +63,7 @@ class RestServer extends \Jacwright\RestServer\RestServer
 
 	public function handleError($statusCode, $errorMessage = null) {
         header('Location: /codegen/v1/index');
+        // include_once SRVPATH.'/views/codegen/v1/index.php';
 	}
 
 	private $codes = array(

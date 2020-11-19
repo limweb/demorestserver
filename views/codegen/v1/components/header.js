@@ -18,49 +18,53 @@ export default {
         &nbsp;&nbsp;TB:{{this.$store.state.table}}&nbsp;&nbsp;
         <select v-model="$store.state.table" >
           <option value="">--- select-table-----</option>
+          <option value="ALL">--- all-tables-----</option>
           <option v-for="(tb,idx) in $store.state.tables" :value="tb.table">{{tb.table}}</option>
         </select>
       </div>
     </div>
 
     <ul class="ml-auto navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="fas fa-th-large"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
+      <li class="nav-item dropdown">
+          <div class="nav-link image d-flex" data-toggle="dropdown" style="align-items: center;"  >
+            <small>&nbsp;&nbsp;Brad Diesel&nbsp;&nbsp;</small>
+            <div class="image">
+              <img src="../../dist/img/user1-128x128.jpg" alt="User Image" class="img-circle elevation-2" style="width:34px;height:34px;">
+            </div> 
+            <span class="badge badge-danger navbar-badge">4</span>
+          </div>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
               </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <router-link to="/profile" class="dropdown-item">
-             <i class="far fa-address-card mr-2"></i> Profile
-              <span class="float-right text-muted text-sm">&nbsp;</span>
-            </router-link>
-            <div class="dropdown-divider"></div>
-            <router-link to="/messages" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">&nbsp;</span>
-            </router-link>
-            <div class="dropdown-divider"></div>
-            <router-link to="/login" class="dropdown-item">
-              <i class="fas fa-sign-out-alt mr-2"></i> Logout
-              <span class="float-right text-muted text-sm">&nbsp;</span>
-            </router-link>
-        </li>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <router-link to="/profile" class="dropdown-item">
+            <i class="far fa-address-card mr-2"></i> Profile
+            <span class="float-right text-muted text-sm">&nbsp;</span>
+          </router-link>
+          <div class="dropdown-divider"></div>
+          <router-link to="/messages" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">&nbsp;</span>
+          </router-link>
+          <div class="dropdown-divider"></div>
+          <router-link to="/login" class="dropdown-item">
+            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            <span class="float-right text-muted text-sm">&nbsp;</span>
+          </router-link>
+      </li>
     </ul>
   </nav>`, 
     mixins: [], 

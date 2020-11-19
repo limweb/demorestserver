@@ -7,6 +7,7 @@ import Authpage from "./pages/authpage.js";
 import Backendall from "./pages/backendall.js";
 import Controllerpage from "./pages/controllerpage.js";
 import Crudpage1 from "./pages/crudpage1.js";
+import Crudpage from "./pages/crudpage.js";
 import Dbsetting from "./pages/dbsetting.js";
 import Loginpage from "./pages/loginpage.js";
 import Menucfg from "./pages/menucfg.js";
@@ -43,6 +44,7 @@ export default [
     { path: '/models', name: 'Models', component: Modelpags ,meta: { requiresAuth: false,layout: 'mainlayout' } },
     { path: '/services', name: 'Services', component: Servicespage ,meta: { requiresAuth: false,layout: 'mainlayout' } },
     { path: '/controllers', name: 'Controllers', component: Controllerpage ,meta: { requiresAuth: false,layout: 'mainlayout' } },
+    { path: '/crud', name: 'Crud', component: Crudpage ,meta: { requiresAuth: false,layout: 'mainlayout' } },
     { path: '/crud1', name: 'Crud1', component: Crudpage1 ,meta: { requiresAuth: false,layout: 'mainlayout' } },
     { path: '/msdt1', name: 'Msdt1', component: Msdtpage1 ,meta: { requiresAuth: false,layout: 'mainlayout' } },
     { path: '/backendall', name: 'Backendall', component: Backendall ,meta: { requiresAuth: false,layout: 'mainlayout' } },
