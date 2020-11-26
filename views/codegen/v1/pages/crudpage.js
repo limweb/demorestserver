@@ -84,14 +84,15 @@ export default {
                             <th  v-for="(col,idx) in columns" v-show="col.show" >
                                 <div class="flex-row d-flex" @click="sorted(col,$event)">
                                     <div class="col-6"><div style="    white-space: nowrap;" >{{col.key}}</div></div>
-                                    <div v-if="col.sort" class="col-6 d-flex" style="cursor: pointer;">
-                                        <div><small v-if="col.sortOrder">{{ col.sortOrder }}</small></div>
+                                    <div v-if="col.sort" class="col-6 d-flex" style="cursor: pointer;justify-content: flex-end;">
+                                        <div><small style="position: absolute;right: 20px;top: 0px;" v-if="col.sortOrder">{{ col.sortOrder }}</small></div>
                                         <div><i class="fas fa-sort-up" :style="{ display: (col.sortDirection=='asc'?'block':'none') }"></i></div>
                                         <div><i aria-hidden="true" class="fa fa-sort" :style="{ display: (col.sortDirection=='x'?'block':'none')}" ></i></div>
                                         <div><i class="fas fa-sort-down" :style="{ display: (col.sortDirection=='desc'?'block':'none')}"></i></div>
                                     </div>
                                 </div>
-                                <input v-if="col.search" type="text" class="pl-2" v-model="col.filtertxt" placeholder="Search..." style="color: darkcyan;" @input="searchfilter" >
+                                <input v-if="col.search" type="text" class="pl-2" v-model="col.filtertxt" placeholder="Search..." 
+                                style="color: darkcyan;width: 100%;" @input="searchfilter" >
                                 <div  v-else="col.search" >&nbsp;</div>
                             </th>
                             <th>&nbsp;</th>
@@ -109,7 +110,7 @@ export default {
                         <td class="text-center " colspan="8" ><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>&nbsp;LOADING.....!</td>
                     </tr>
                     <template v-if="datas.length>0"  v-for="(item,idx) in datas" :key="idx">
-                        <tr >
+                        <tr :class="[item.inline ? 'border-2 border-green-300 ':'']">
                             <td  class="accordion-toggle collapsed" style="cursor:pointer;" data-toggle="collapse" :data-target="'#accordion'+idx" >
                                 <span class="expand-button"></span>
                             </td>
@@ -117,20 +118,25 @@ export default {
                             <td style="cursor:pointer;">
                                 <input v-model="item.check" type="checkbox" >
                             </td>
-                            <td v-for="(col,idz) in columns" v-show="col.show" :key="idz" >{{item[col.key]}}</td>
+                            <td v-for="(col,idz) in columns" v-show="col.show" :key="idz" class="px-0 py-0" >
+                                <div :contenteditable="item.inline" class="w-full px-2 py-3" style="height:62px;">{{item[col.key]}}</div>
+                            </td>
                             <td>         
                                 <i class="fa fa-spinner fa-spin fa-x fa-fw"></i>
                                 <i class="fa fa-cog fa-spin fa-x fa-fw"></i>
                                 <i class="fa fa-spinner fa-pulse fa-x fa-fw"></i>
                             </td>
                             <td class="d-flex justify-content-center" style="width:100px;cursor: pointer;">
+                                    <img src="https://static.thenounproject.com/png/399935-84.png" 
+                                    class="w-5 h-4" @click="item.inline=!item.inline"
+                                    > 
                                     <i class="far fa-eye text-success"  style="width:35px;height:35px;" ></i>
                                     <i class="ml-1 far fa-edit text-warning"  style="width:35px;height:35px;" ></i>
                                     <i class="ml-1 far fa-trash-alt text-danger" style="width:35px;height:35px;"  ></i>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="8" :id="'accordion'+idx" class="collapse">
+                            <td colspan="10" :id="'accordion'+idx" class="collapse">
                                 <div class="flex-col flex-wrap pl-5 d-flex">
                                     <div v-for="(add,idy) in Object.keys(item?.address)" :key="idy">{{add}}:{{item?.address[add]}}</div>
                                 </div>
@@ -138,22 +144,22 @@ export default {
                         </tr>
                     </template>
                 </tbody>
-                    <thead class="thead-dark">
-                        <tr>
-                            <th style="width:20px;">&nbsp;&nbsp;&nbsp;</th>
-                            <th style="width:20px;white-space: nowrap;"># No </th>
-                            <th style="width:20px;"  @click="checkedall">
-                                <input v-model="selectAll" type="checkbox">
-                            </th>
-                            <th  v-for="(col,idx) in columns" v-show="col.show" >
-                                {{col.key}}
-                            </th>
-                            <th>&nbsp;</th>
-                            <th class="text-center" style="width:100px;">
-                                <div>Action</div>
-                            </th>
-                        </tr>
-                    </thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th style="width:20px;">&nbsp;&nbsp;&nbsp;</th>
+                        <th style="width:20px;white-space: nowrap;"># No </th>
+                        <th style="width:20px;"  @click="checkedall">
+                            <input v-model="selectAll" type="checkbox">
+                        </th>
+                        <th  v-for="(col,idx) in columns" v-show="col.show" >
+                            {{col.key}}
+                        </th>
+                        <th>&nbsp;</th>
+                        <th class="text-center" style="width:100px;">
+                            <div>Action</div>
+                        </th>
+                    </tr>
+                </thead>
             </table>
             <div class="mt-2 mb-2 d-flex justify-content-between">
                 <div>Displaying {{this.form}} to {{this.to}} of {{this.total}} items</div>
@@ -262,7 +268,6 @@ export default {
         let url = 'https://vuetable.ratiw.net/api/users?per_page='+this.per_page;
         this.getdata(url);
     },
-    mounted() {},
     methods: {
         searchfilter(){
             if (this.timer) {
@@ -277,9 +282,10 @@ export default {
             this.columns.map(c=>c.filtertxt='')
         },
         sorted(col,evt){
+            console.log(evt)
             if(col.sort){
                 let sorturl = '';
-                if(evt.ctrlKey){
+                if(evt.ctrlKey || evt.altKey || evt.metaKey){
                 let s = this.sortOrder.find(sort=>sort.key==col.key);
                 if(s){
                     s.sortDirection = s.sortDirection=='asc'?'desc':'asc';
@@ -308,7 +314,7 @@ export default {
             return value === 'M'
                 ? '<span class="tag is-primary is-medium"><span class="icon"><i class="fa fa-mars"></i></span>&nbsp;Male</span>'
                 : '<span class="tag is-danger is-medium"><span class="icon"><i class="fa fa-venus"></i></span>&nbsp;Female</span>'
-            },
+        },
         checkedall(){
             this.selectAll=!this.selectAll;
             console.log('---select--->',this.selectAll);
@@ -350,6 +356,7 @@ export default {
                 
                 this.datas = rs.data.data.map(item=>{
                         item.check = false;
+                        item.inline  = false;
                         return item;
                 })
                 this.current_page = rs.data.current_page;
@@ -401,5 +408,6 @@ export default {
         }
 
     },
+    mounted() {},
     components: {}
 };
