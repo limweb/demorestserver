@@ -9,7 +9,7 @@ export default {
     data() { 
       return { 
           theme: 'AdminLte', 
-          name: 'Loginlayout', 
+          name: 'LockScreenlayout', 
       }; 
     }, 
     created() { 

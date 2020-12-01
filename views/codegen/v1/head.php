@@ -15,5 +15,7 @@
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://unpkg.com/vue2-datepicker@3.8.1/index.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/print.css">
 </head>
 <body class="hold-transition sidebar-mini">

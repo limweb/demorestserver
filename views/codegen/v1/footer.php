@@ -31,5 +31,9 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
+<!-- import JavaScript -->
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.14.1/theme-chalk/index.min.css">
+    
 </body>
 </html>

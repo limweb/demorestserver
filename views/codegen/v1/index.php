@@ -3,6 +3,7 @@
 </div>
 <link href="/dist/css/tailwind.min.css" rel="stylesheet">
 <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+<!-- <script src='https://unpkg.com/vue2-datepicker@3.8.1/index.min.js'></script> -->
 <?php 
   $url = $this->server->root.'/views/'.$this->viewpath;
   $viewpath = $this->server->root.$this->viewpath;
@@ -89,5 +90,16 @@
 
   td {
       white-space: nowrap;
+  }
+  
+  input[type="text"] {
+
+element.style {
+    height: 62px;
+    width:min-content;
+    min-width:40px;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
   }
 </style>

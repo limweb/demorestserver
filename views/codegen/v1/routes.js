@@ -1,5 +1,12 @@
 import Main from "./pages/index.js";
-import Crudpage from "./pages/crudpage.js";
+
+import Crudpage       from "./pages/crud/index.js";
+import CrudpageList   from "./pages/crud/list.js";
+import CrudpageAdd    from  "./pages/crud/add.js";
+import CrudpageView   from "./pages/crud/view.js";
+import CrudpageDel    from  "./pages/crud/delete.js";
+import CrudpageEdit   from "./pages/crud/edit.js";
+
 const Login = () => import("./pages/login.js");
 const Dashv1 = () => import("./pages/dashboard1.js");
 const Dashv2 = () => import("./pages/dashboard2.js");
@@ -24,7 +31,8 @@ const Forgotpass = () => import("./pages/forgotpass.js");
 const Register = () => import("./pages/register.js");
 const Authfacebook = () => import("./pages/authfacebook.js");
 const Authgoogle = () => import("./pages/authgoogle.js");
-
+const LockScreen = () => import("./pages/lockscreen.js");
+const Recoverpass  = () => import("./pages/recoverpass.js");
 export default [
   { path: "/index", name: "Index", component: Main, meta: { requiresAuth: false, layout: "mainlayout" } },
   { path: "/home", name: "Home", component: Main, meta: { requiresAuth: false, layout: "mainlayout" } },
@@ -43,14 +51,28 @@ export default [
   { path: "/models", name: "Models", component: Modelpags, meta: { requiresAuth: false, layout: "mainlayout" } },
   { path: "/services", name: "Services", component: Servicespage, meta: { requiresAuth: false, layout: "mainlayout" } },
   { path: "/controllers", name: "Controllers", component: Controllerpage, meta: { requiresAuth: false, layout: "mainlayout" } },
-  { path: "/crud", name: "Crud", component: Crudpage, meta: { requiresAuth: false, layout: "mainlayout" } },
+  
+
+  { path: "/crud", name: "Crud", component: Crudpage, meta: { requiresAuth: false, layout: "mainlayout" },
+    children: [
+      { path: "",           component: CrudpageList ,  meta: { requiresAuth: false, layout: "mainlayout" }},
+      { path: "add",        component: CrudpageAdd ,  meta: { requiresAuth: false, layout: "mainlayout" }},
+      { path: "view/:id",   component: CrudpageView , meta: { requiresAuth: false, layout: "mainlayout" }},
+      { path: "delete/:id", component: CrudpageDel ,  meta: { requiresAuth: false, layout: "mainlayout" }},
+      { path: "edit/:id",   component: CrudpageEdit , meta: { requiresAuth: false, layout: "mainlayout" }},
+    ]
+  },
+
+
+  { path: "/lockscreen", name: "Lockscreen", component: LockScreen, meta: { requiresAuth: false, layout: "lockscreenlayout" } },
   { path: "/crud1", name: "Crud1", component: Crudpage1, meta: { requiresAuth: false, layout: "mainlayout" } },
   { path: "/msdt1", name: "Msdt1", component: Msdtpage1, meta: { requiresAuth: false, layout: "mainlayout" } },
   { path: "/backendall", name: "Backendall", component: Backendall, meta: { requiresAuth: false, layout: "mainlayout" } },
   { path: "/messages", name: "Messages", component: Messages, meta: { requiresAuth: false, layout: "mainlayout" } },
   { path: "/profile", name: "Profile", component: Profile, meta: { requiresAuth: false, layout: "mainlayout" } },
-  { path: "/forgotpass", name: "Forgotpass", component: Forgotpass, meta: { requiresAuth: false, layout: "mainlayout" } },
-  { path: "/register", name: "Register", component: Register, meta: { requiresAuth: false, layout: "mainlayout" } },
+  { path: "/forgotpass", name: "Forgotpass", component: Forgotpass, meta: { requiresAuth: false, layout: "lockscreenlayout" } },
+  { path: "/recoverpass", name: "Forgotpass", component: Recoverpass, meta: { requiresAuth: false, layout: "lockscreenlayout" } },
+  { path: "/register", name: "Register", component: Register, meta: { requiresAuth: false, layout: "lockscreenlayout" } },
   { path: "/authfacebook", name: "Authfacebook", component: Authfacebook, meta: { requiresAuth: false, layout: "mainlayout" } },
   { path: "/authgoogle", name: "Authgoogle", component: Authgoogle, meta: { requiresAuth: false, layout: "mainlayout" } },
 ];

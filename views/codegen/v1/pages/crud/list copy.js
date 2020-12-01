@@ -1,3 +1,11 @@
+
+import Datepicker from "../../components/datepicker.js";
+import Daterangpicker from "../../components/daterangpicker.js";
+import Datetimepicker from "../../components/datetimepicker.js";
+import Yearpicker from "../../components/yearpicker.js";
+import Monthpicker from "../../components/monthpicker.js";
+import Weekpicker from "../../components/weekpicker.js";
+
 export default {
     template: `<div class="content-wrapper">
     <section class="content-header">
@@ -18,6 +26,7 @@ export default {
         </div>
     </section>
     <section class="content">
+         <router-view></router-view>
         <div class="card">
             <div class="card-header">
                 <div class="d-flex">
@@ -45,10 +54,14 @@ export default {
                         <i class="fa fa-spinner fa-pulse fa-x fa-fw"></i>
                     </div>
                     <div class="col-2">
+                        <router-link to="/crud/add" >/add</router-link>
+                        <router-link to="/crud/view" >/view</router-link>
+                        <router-link to="/crud/delete" >/delete</router-link>
+                        <router-link to="/crud/edit" >/edit</router-link>
                     </div>
                     <div class="col-2 card-tools">
                         <div class="d-flex justify-content-end">
-                            <div class="btn btn-success" >
+                            <div class="btn btn-success" id="addrow" @click="addrow">
                                 <i class="fas fa-plus-circle"></i>
                             </div>
                             <div class="ml-1 dropdown">
@@ -119,7 +132,12 @@ export default {
                                 <input v-model="item.check" type="checkbox" >
                             </td>
                             <td v-for="(col,idz) in columns" v-show="col.show" :key="idz" class="px-0 py-0" >
-                                <div :contenteditable="item.inline" class="w-full px-2 py-3" style="height:62px;">{{item[col.key]}}</div>
+                                <!-- <div :contenteditable="item.inline" class="w-full px-2 py-3" style="height:62px;">{{item[col.key]}}</div> -->
+                                <div v-if="col.inline.enable && item.inline">
+                                    <!-- <input :type="col.inline.type"  v-model="item[col.key]"  class="w-full px-2 py-3 bg-blue-100" style="height:62px;" /> -->
+                                    <component is="input_text" v-model="item[col.key]"  class="w-full px-2 py-3 bg-blue-100" style="height:62px;" />
+                                </div>
+                                <div v-else class="w-full px-2 py-3" style="height:62px;">{{item[col.key]}}</div>
                             </td>
                             <td>         
                                 <i class="fa fa-spinner fa-spin fa-x fa-fw"></i>
@@ -127,12 +145,15 @@ export default {
                                 <i class="fa fa-spinner fa-pulse fa-x fa-fw"></i>
                             </td>
                             <td class="d-flex justify-content-center" style="width:100px;cursor: pointer;">
-                                    <img src="https://static.thenounproject.com/png/399935-84.png" 
-                                    class="w-5 h-4" @click="item.inline=!item.inline"
+                                    <img v-if="!item.inline" src="https://static.thenounproject.com/png/399935-84.png" 
+                                    class="w-5 h-4 mr-2" @click="inlineEdit(item)"
                                     > 
-                                    <i class="far fa-eye text-success"  style="width:35px;height:35px;" ></i>
-                                    <i class="ml-1 far fa-edit text-warning"  style="width:35px;height:35px;" ></i>
-                                    <i class="ml-1 far fa-trash-alt text-danger" style="width:35px;height:35px;"  ></i>
+                                    <i @click="saveInline(item)" v-if="item.inline" class="mr-2 fas fa-check"  style="width:35px;height:35px;" ></i>
+
+                                    <i @click="viewItem(item)" v-if="!item.inline" class="mr-2 far fa-eye text-success"  style="width:35px;height:35px;" ></i>
+                                    <i @click="calcelInline(item)" v-if="item.inline" class="mr-2 fas fa-times"   style="width:35px;height:35px;" ></i>
+                                    <i class="ml-1 far fa-edit text-warning"  style="width:35px;height:35px;" @click="editrow(item)" ></i>
+                                    <i class="ml-1 far fa-trash-alt text-danger" style="width:35px;height:35px;" @click="delrow(idx,item)" ></i>
                             </td>
                         </tr>
                         <tr>
@@ -229,6 +250,12 @@ export default {
     mixins: [],
     data() {
         return {
+            mydate: null,
+            mydaterang: null,
+            mydatetime: null,
+            myyear: null,
+            mymonth: null,
+            myweek: null,
             theme: 'AdminLte',
             name: 'User Records',
             datas: [],
@@ -242,19 +269,19 @@ export default {
             goto_page:1,
             total: 200,
             columns: [
-            { filtertxt:'', show: true,  search: false,  searchfield: 'id',         sort: false, sortfield: 'id',         sortOrder: 0,  sortDirection: 'x', key:'id' },
-            { filtertxt:'', show: true,  search: true,   searchfield: 'name',       sort: true,  sortfield: 'name',       sortOrder: 0,  sortDirection: 'x', key:'name' },
-            { filtertxt:'', show: true,  search: true,   searchfield: 'nickname',   sort: true,  sortfield: 'nickname',   sortOrder: 0,  sortDirection: 'x', key:'nickname' },
-            { filtertxt:'', show: true,  search: true,   searchfield: 'birthdate',  sort: true,  sortfield: 'birthdate',  sortOrder: 0,  sortDirection: 'x', key:'age' },
-            { filtertxt:'', show: false, search: false,  searchfield: 'birthdate',  sort: false, sortfield: 'birthdate',  sortOrder: 0,  sortDirection: 'x', key:'birthdate' },
-            { filtertxt:'', show: false, search: false,  searchfield: 'email',      sort: false, sortfield: 'email',      sortOrder: 0,  sortDirection: 'x', key:'email' },
-            { filtertxt:'', show: false, search: false,  searchfield: 'gender',     sort: false, sortfield: 'gender',     sortOrder: 0,  sortDirection: 'x', key:'gender' },
-            { filtertxt:'', show: true,  search: true,   searchfield:  'salary',    sort: true,  sortfield:  'salary',     sortOrder: 0,  sortDirection: 'x', key:'salary' },
-            { filtertxt:'', show: false, search: false,  searchfield: 'address',    sort: false, sortfield: 'address',    sortOrder: 0,  sortDirection: 'x', key:'address' },
-            { filtertxt:'', show: false, search: false,  searchfield: 'group',      sort: false, sortfield: 'group',      sortOrder: 0,  sortDirection: 'x', key:'group' },
-            { filtertxt:'', show: false, search: false,  searchfield: 'group_id',   sort: false, sortfield: 'group_id',   sortOrder: 0,  sortDirection: 'x', key:'group_id' },
-            { filtertxt:'', show: false, search: false,  searchfield: 'created_at', sort: false, sortfield: 'created_at', sortOrder: 0,  sortDirection: 'x', key:'created_at' },
-            { filtertxt:'', show: false, search: false,  searchfield: 'updated_at', sort: false, sortfield: 'updated_at', sortOrder: 0,  sortDirection: 'x', key:'updated_at' }],
+            { filtertxt:'', show: true,  search: false,  inline:{ enable:false,  type:'text'    },searchfield:   'id',         sort: false, sortfield: 'id',         sortOrder: 0,  sortDirection: 'x', key:'id' },
+            { filtertxt:'', show: true,  search: true,   inline:{ enable:true,   type:'text'    },searchfield:   'name',       sort: true,  sortfield: 'name',       sortOrder: 0,  sortDirection: 'x', key:'name' },
+            { filtertxt:'', show: true,  search: true,   inline:{ enable:true,   type:'text'    },searchfield:   'nickname',   sort: true,  sortfield: 'nickname',   sortOrder: 0,  sortDirection: 'x', key:'nickname' },
+            { filtertxt:'', show: true,  search: true,   inline:{ enable:true,   type:'number'  },searchfield:   'birthdate',  sort: true,  sortfield: 'birthdate',  sortOrder: 0,  sortDirection: 'x', key:'age' },
+            { filtertxt:'', show: false, search: false,  inline:{ enable:true,   type:'date'    },searchfield:   'birthdate',  sort: false, sortfield: 'birthdate',  sortOrder: 0,  sortDirection: 'x', key:'birthdate' },
+            { filtertxt:'', show: false, search: false,  inline:{ enable:false,  type:'text'    },searchfield:   'email',      sort: false, sortfield: 'email',      sortOrder: 0,  sortDirection: 'x', key:'email' },
+            { filtertxt:'', show: false, search: false,  inline:{ enable:false,  type:'text'    },searchfield:   'gender',     sort: false, sortfield: 'gender',     sortOrder: 0,  sortDirection: 'x', key:'gender' },
+            { filtertxt:'', show: true,  search: true,   inline:{ enable:true,   type: 'number' },searchfield:   'salary',     sort: true,  sortfield: 'salary',     sortOrder: 0,  sortDirection: 'x', key:'salary' },
+            { filtertxt:'', show: false, search: false,  inline:{ enable:false,  type:'text'    },searchfield:   'address',    sort: false, sortfield: 'address',    sortOrder: 0,  sortDirection: 'x', key:'address' },
+            { filtertxt:'', show: false, search: false,  inline:{ enable:false,  type:'text'    },searchfield:   'group',      sort: false, sortfield: 'group',      sortOrder: 0,  sortDirection: 'x', key:'group' },
+            { filtertxt:'', show: false, search: false,  inline:{ enable:false,  type:'text'    },searchfield:   'group_id',   sort: false, sortfield: 'group_id',   sortOrder: 0,  sortDirection: 'x', key:'group_id' },
+            { filtertxt:'', show: false, search: false,  inline:{ enable:false,  type:'text'    },searchfield:   'created_at', sort: false, sortfield: 'created_at', sortOrder: 0,  sortDirection: 'x', key:'created_at' },
+            { filtertxt:'', show: false, search: false,  inline:{ enable:false,  type:'text'    },searchfield:   'updated_at', sort: false, sortfield: 'updated_at', sortOrder: 0,  sortDirection: 'x', key:'updated_at' }],
             selectAll:false,
             sortOrder:[],
             loading:false,
@@ -269,6 +296,56 @@ export default {
         this.getdata(url);
     },
     methods: {
+        viewItem(item){
+           this.$router.push('/crud/view/'+item.id);
+        },
+        saveInline(item){
+          console.log('saveinline--->');
+          item.inline=!item.inline 
+          this.bckedititem = null;
+          
+        },
+        calcelInline(item){
+            console.log('test--->',item==this.bckedititem);
+            item.inline=!item.inline 
+            Object.keys(this.bckedititem).map(key=>{
+                item[key] = this.bckedititem[key];
+            })
+        },
+        inlineEdit(item){ 
+            if (this.datas.filter(row=>row.inline && row.id != item.id ).length > 0 ){
+                this.$msgbox.alert('Please save before edit new line')
+            } else {
+                this.bckedititem = JSON.parse(JSON.stringify(item));
+                item.inline=!item.inline 
+            }
+        },
+        chkinline(){
+            if (this.datas.filter(row=>row.inline).length > 0 ){
+                this.$msgbox.alert('Please save before edit new line')
+                return false;    
+            } else {
+                return true;    
+            }
+        },
+        editrow(item){
+           this.$router.push('/crud/edit/'+item.id)
+        },
+        delrow(idx,item){
+           this.$msgbox.confirm(`Are you sure want to delete id = ${idx} ? `,'!DELETE').then(rs=>{
+               if(rs==='confirm'){
+                   this.$message.info('Confirm')
+                   this.$router.push('/crud/delete/'+item.id)
+               }
+           }).catch(err=>{
+                if(err ==='cancel') {
+                   this.$message.info('Cancel')
+               } 
+           })
+        },
+        addrow(){
+            this.$router.push("/crud/add")
+        },
         searchfilter(){
             if (this.timer) {
                 clearTimeout(this.timer);
@@ -350,29 +427,31 @@ export default {
           this.getdata(url);
         },
         getdata(url){
-            this.loading = true;
-            axios.get(url).then(rs=>{
-                console.log(rs);
-                
-                this.datas = rs.data.data.map(item=>{
-                        item.check = false;
-                        item.inline  = false;
-                        return item;
-                })
-                this.current_page = rs.data.current_page;
-                this.goto_page = this.current_page;
-                this.from = rs.data.from;
-                this.last_page = rs.data.last_page;
-                this.next_page_url = rs.data.next_page_url;
-                this.per_page = rs.data.per_page;
-                this.prev_page_url = rs.data.prev_page_url;
-                this.to = rs.data.to;
-                this.total = rs.data.total;
-                this.loading = false;
-            }).catch(err=>{
-                console.error(err)
-                this.loading = false;
-            });            
+            if(this.chkinline()){
+                this.loading = true;
+                axios.get(url).then(rs=>{
+                    console.log(rs);
+                    
+                    this.datas = rs.data.data.map(item=>{
+                            item.check = false;
+                            item.inline  = false;
+                            return item;
+                    })
+                    this.current_page = rs.data.current_page;
+                    this.goto_page = this.current_page;
+                    this.from = rs.data.from;
+                    this.last_page = rs.data.last_page;
+                    this.next_page_url = rs.data.next_page_url;
+                    this.per_page = rs.data.per_page;
+                    this.prev_page_url = rs.data.prev_page_url;
+                    this.to = rs.data.to;
+                    this.total = rs.data.total;
+                    this.loading = false;
+                }).catch(err=>{
+                    console.error(err)
+                    this.loading = false;
+                });            
+            }
         }
     },
     computed: {
@@ -408,6 +487,14 @@ export default {
         }
 
     },
-    mounted() {},
-    components: {}
+    mounted() {
+    },
+    components: {
+        Datepicker,
+        Daterangpicker,
+        Datetimepicker,
+        Yearpicker,
+        Monthpicker,
+        Weekpicker,
+    }
 };

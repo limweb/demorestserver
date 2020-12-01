@@ -37,32 +37,36 @@ export default {
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="mr-3 img-size-50 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
                   <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                 </h3>
                 <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <p class="text-sm text-muted"><i class="mr-1 far fa-clock"></i> 4 Hours Ago</p>
               </div>
             </div>
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
           <router-link to="/profile" class="dropdown-item">
-            <i class="far fa-address-card mr-2"></i> Profile
-            <span class="float-right text-muted text-sm">&nbsp;</span>
+            <i class="mr-2 far fa-address-card"></i> Profile
+            <span class="float-right text-sm text-muted">&nbsp;</span>
           </router-link>
           <div class="dropdown-divider"></div>
           <router-link to="/messages" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">&nbsp;</span>
+            <i class="mr-2 fas fa-envelope"></i> 4 new messages
+            <span class="float-right text-sm text-muted">&nbsp;</span>
           </router-link>
           <div class="dropdown-divider"></div>
+          <router-link to="/lockscreen" class="dropdown-item">
+            <i class="fas fa-lock"></i>&nbsp;&nbsp; Lock Screen
+            <span class="float-right text-sm text-muted">&nbsp;</span>
+          </router-link>
           <router-link to="/login" class="dropdown-item">
-            <i class="fas fa-sign-out-alt mr-2"></i> Logout
-            <span class="float-right text-muted text-sm">&nbsp;</span>
+            <i class="mr-2 fas fa-sign-out-alt"></i> Logout
+            <span class="float-right text-sm text-muted">&nbsp;</span>
           </router-link>
       </li>
     </ul>

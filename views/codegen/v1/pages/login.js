@@ -1,13 +1,13 @@
 export default { 
     template: `<div class="login-box">
   <div class="login-logo">
-    <router-link to="/index"><b>Acc</b>MAN</router-link>
+    <router-link to="#"><b>AccMan</b>CODEG</router-link>
   </div>
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
-      <form action="../../index3.html" method="post">
-        <div class="input-group mb-3">
+      <form action="#" method="post">
+        <div class="mb-3 input-group">
           <input type="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -15,7 +15,7 @@ export default {
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
+        <div class="mb-3 input-group">
           <input type="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -25,8 +25,8 @@ export default {
         </div>
         <div class="row">
           <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
+            <div class="flex icheck-primary align-center">
+              <input type="checkbox" id="remember" class="mr-3">
               <label for="remember">
                 Remember Me
               </label>
@@ -37,13 +37,13 @@ export default {
           </div>
         </div>
       </form>
-      <div class="social-auth-links text-center mb-3">
+      <div class="mb-3 text-center social-auth-links">
         <p>- OR -</p>
         <router-link to="/authfacebook" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+          <i class="mr-2 fab fa-facebook"></i> Sign in using Facebook
         </router-link>
         <router-link to="/authgoogle" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+          <i class="mr-2 fab fa-google-plus"></i> Sign in using Google+
         </router-link>
       </div>
       <p class="mb-1">
@@ -67,7 +67,8 @@ export default {
     mounted() {
     }, 
     methods: {
-     login(){
+     login(evt){
+        evt.preventDefault();
         this.$router.push('/index');
       }
 

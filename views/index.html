@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Vue CDN JS </title>
+
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet" type="text/css">
+    <script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" />
+    <link rel='stylesheet' href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" >
+    <script src="https://unpkg.com/vue-strap/dist/vue-strap.min.js"></script>
+
+    
+    <style type="text/css" media="screen">
+
+        @-webkit-keyframes a{0%{opacity:0;bottom:-15px;max-height:0;max-width:0;margin-top:0}30%{opacity:.8;bottom:-3px}to{opacity:1;bottom:0;max-height:200px;margin-top:12px;max-width:400px}}@keyframes a{0%{opacity:0;bottom:-15px;max-height:0;max-width:0;margin-top:0}30%{opacity:.8;bottom:-3px}to{opacity:1;bottom:0;max-height:200px;margin-top:12px;max-width:400px}}@-webkit-keyframes b{0%{opacity:1;bottom:0}30%{opacity:.2;bottom:-3px}to{opacity:0;bottom:-15px}}@keyframes b{0%{opacity:1;bottom:0}30%{opacity:.2;bottom:-3px}to{opacity:0;bottom:-15px}}@-webkit-keyframes c{0%{opacity:0}30%{opacity:.5}to{opacity:.6}}@keyframes c{0%{opacity:0}30%{opacity:.5}to{opacity:.6}}@-webkit-keyframes d{0%{opacity:.6}30%{opacity:.1}to{opacity:0}}@keyframes d{0%{opacity:.6}30%{opacity:.1}to{opacity:0}}.notyf__icon--alert,.notyf__icon--confirm{height:21px;width:21px;background:#fff;border-radius:50%;display:block;margin:0 auto;position:relative}.notyf__icon--alert:after,.notyf__icon--alert:before{content:"";background:#ed3d3d;display:block;position:absolute;width:3px;border-radius:3px;left:9px}.notyf__icon--alert:after{height:3px;top:14px}.notyf__icon--alert:before{height:8px;top:4px}.notyf__icon--confirm:after,.notyf__icon--confirm:before{content:"";background:#3dc763;display:block;position:absolute;width:3px;border-radius:3px}.notyf__icon--confirm:after{height:6px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);top:9px;left:6px}.notyf__icon--confirm:before{height:11px;-webkit-transform:rotate(45deg);transform:rotate(45deg);top:5px;left:10px}.notyf__toast{display:block;overflow:hidden;-webkit-animation:a .3s forwards;animation:a .3s forwards;box-shadow:0 1px 3px 0 rgba(0,0,0,.45);position:relative;padding-right:13px}.notyf__toast.notyf--alert{background:#ed3d3d}.notyf__toast.notyf--confirm{background:#3dc763}.notyf__toast.notyf--disappear{-webkit-animation:b .3s 1 forwards;animation:b .3s 1 forwards;-webkit-animation-delay:.25s;animation-delay:.25s}.notyf__toast.notyf--disappear .notyf__message{opacity:1;-webkit-animation:b .3s 1 forwards;animation:b .3s 1 forwards;-webkit-animation-delay:.1s;animation-delay:.1s}.notyf__toast.notyf--disappear .notyf__icon{opacity:1;-webkit-animation:d .3s 1 forwards;animation:d .3s 1 forwards}.notyf__wrapper{display:table;width:100%;padding-top:20px;padding-bottom:20px;padding-right:15px;border-radius:3px}.notyf__icon{width:20%;text-align:center;font-size:1.3em;-webkit-animation:c .5s forwards;animation:c .5s forwards;-webkit-animation-delay:.25s;animation-delay:.25s}.notyf__icon,.notyf__message{display:table-cell;vertical-align:middle;opacity:0}.notyf__message{width:80%;position:relative;-webkit-animation:a .3s forwards;animation:a .3s forwards;-webkit-animation-delay:.15s;animation-delay:.15s}.notyf{position:fixed;bottom:20px;right:30px;width:20%;color:#fff;z-index:1}@media only screen and (max-width:736px){.notyf__container{width:90%;margin:0 auto;display:block;right:0;left:0}}        
+    </style>
+    <script type="text/javascript">
+        
+            class Notyf {
+
+                constructor(args) {
+                    this.notifications = [];
+                    var defaults = {
+                        delay: 2000,
+                        alertIcon: 'notyf__icon--alert',
+                        confirmIcon: 'notyf__icon--confirm'
+                    }
+
+                    if (arguments[0] && typeof arguments[0] == "object") {
+                        this.options = this.extendDefaults(defaults, arguments[0]);
+                    } else {
+                        this.options = defaults;
+                    }
+
+                    //Creates the main notifications container
+                    var docFrag = document.createDocumentFragment();
+                    var notyfContainer = document.createElement('div');
+                    notyfContainer.className = 'notyf';
+                    docFrag.appendChild(notyfContainer);
+                    document.body.appendChild(docFrag);
+                    this.container = notyfContainer;
+
+                    //Stores which transitionEnd event this browser supports
+                    this.animationEnd = this.animationEndSelect();
+
+
+                }
+
+                //---------- Public methods ---------------
+                /**
+                 * Shows an alert card
+                 */
+                alert(alertMessage) {
+                    var card = this.buildNotificationCard.call(this, alertMessage, this.options.alertIcon);
+                    card.className += ' notyf--alert';
+                    this.container.appendChild(card);
+                    this.notifications.push(card);
+                }
+
+
+                /**
+                 * Creates a generic card with the param message. Returns a document fragment.
+                 */
+                 buildNotificationCard(messageText, iconClass) {
+                    //Card wrapper
+                    var notification = document.createElement('div');
+                    notification.className = 'notyf__toast';
+
+                    var wrapper = document.createElement('div');
+                    wrapper.className = 'notyf__wrapper';
+
+                    var iconContainer = document.createElement('div');
+                    iconContainer.className = 'notyf__icon';
+
+                    var icon = document.createElement('i');
+                    icon.className = iconClass;
+
+                    var message = document.createElement('div');
+                    message.className = 'notyf__message';
+                    message.innerHTML = messageText;
+
+                    //Build the card
+                    iconContainer.appendChild(icon);
+                    wrapper.appendChild(iconContainer);
+                    wrapper.appendChild(message);
+                    notification.appendChild(wrapper);
+
+                    var _this = this;
+                    setTimeout(function() {
+                        notification.className += " notyf--disappear";
+                        notification.addEventListener(_this.animationEnd, function(event) {
+                            event.target == notification && _this.container.removeChild(notification);
+                        });
+                        var index = _this.notifications.indexOf(notification);
+                        _this.notifications.splice(index, 1);
+                    }, _this.options.delay);
+
+                    return notification;
+                }
+
+                // Determine which animationend event is supported
+                animationEndSelect() {
+                    var t;
+                    var el = document.createElement('fake');
+                    var transitions = {
+                        'transition': 'animationend',
+                        'OTransition': 'oAnimationEnd',
+                        'MozTransition': 'animationend',
+                        'WebkitTransition': 'webkitAnimationEnd'
+                    }
+
+                    for (t in transitions) {
+                        if (el.style[t] !== undefined) {
+                            return transitions[t];
+                        }
+                    }
+                }
+
+                //---------- Private methods ---------------
+
+                /**
+                 * Populates the source object with the value from the same keys found in destination
+                 */
+                extendDefaults(source, destination) {
+                    // console.log('bf',source);
+                    for (source.property in destination) {
+                        console.log(source.property);
+                        //Avoid asigning inherited properties of destination, only asign to source the destination own properties
+                        if (destination.hasOwnProperty(source.property)) {
+                            source[source.property] = destination[source.property];
+                        }
+                    }
+                    // console.log('af',source);
+                    return source;
+                }
+
+                /**
+                 * Shows a confirm card
+                 */
+                confirm(alertMessage) {
+                    var card = this.buildNotificationCard.call(this, alertMessage, this.options.confirmIcon);
+                    card.className += ' notyf--confirm';
+                    this.container.appendChild(card);
+                    this.notifications.push(card);
+                }
+
+            }
+    </script>
+
+</head>
+<body>
+<div id="app">
+     loading....	
+     
+     <button @click="alert()" type="button" class="btn btn-danger">alert</button>
+     <button @click="confirm()" type="button" class="btn btn-default">confirm</button> 
+</div>	
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue-resource/dist/vue-resource.min.js"></script>
+<script type="text/javascript">
+    
+    var vm = new Vue({
+    mixins:[],
+    data:{
+        counter: 1 	
+    
+    },
+    el:'#app',
+    methods:{
+     test(){ console.log('test',this);  },
+     test1(){ alert('test1'); },
+     alert(){ this.nty.alert('Hello test');     },
+     confirm(){ this.nty.confirm('test confirm'); }
+    },
+    computed:{ 
+        aaa:function(){
+           return this.counter * 2;
+        }
+    },
+    watch: {
+        counter: function (val, oldVal) {
+          console.log('new: %s, old: %s', val, oldVal)
+        },
+    },
+    components:{
+        'comp1':{template:'<div>componetn1</div>'},
+        'comp2':{template:'<div>componetn2</div>'},
+    },
+    // render : h => h(App),
+    beforeCreate  () { /* console.log('beforeCreate'); */ },
+    created       () { /* console.log('created'); */ },
+    beforeMount   () { /* console.log('beforeMount'); */ },
+    mounted       () { /* console.log('mounted'); */
+                    this.test();
+                    this.test1();
+                    this.nty = new Notyf();
+    },
+    beforeUpdate  () { /* console.log('beforeUpdate'); */ },
+    updated       () { /* console.log('updated'); */ },
+    beforeDestroy () { /* console.log('beforeDestroy'); */ },
+    destroyed     () { /* console.log('destroyed'); */ },
+    })	
+    
+
+
+</script>
+</body>
+</html>
+
