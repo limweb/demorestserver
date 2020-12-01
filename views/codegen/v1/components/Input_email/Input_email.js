@@ -1,28 +1,33 @@
 export default { 
-    template: `
+    inheritAttrs: false, 
+    template: ` 
     <input 
-        type="email" 
-        class="w-full p-2"
-        :value="value"
-        @input="updateValue($event.target.value)"
-    />`, 
+       type="email"
+       class="w-full p-2 border border-black"  
+       v-bind="$attrs" 
+       :class="$attrs.className"  
+       :style="$attrs.styleName" 
+       :value="value" 
+       @input="updateValue($event.target.value)"  
+    />       
+    `,
     mixins: [], 
-    props:['value'],
+    props:["value"], 
     data() { 
       return { 
           theme: 'AdminLte', 
-          name: 'Inputemail', 
+          name: 'Input_email', 
       }; 
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
     }, 
-    mounted() {}, 
-    methods: {
-      updateValue(value){
-        this.$emit('input',value)
-      }
+    methods: { 
+       updateValue(value){ 
+         this.$emit('input',value) 
+       }         
     }, 
     computed: {}, 
+    mounted() {}, 
     components:{} 
 }; 

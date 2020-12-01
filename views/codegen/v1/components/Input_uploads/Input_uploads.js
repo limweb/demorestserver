@@ -1,6 +1,7 @@
 export default { 
     template: `
-    <div><label>Uploads:</label>
+    <div class="w-full p-2 border border-black">
+      <label>Uploads:</label>
         <div>input type="file" /><img src="#" /></div>
         <div>input type="file" /><img src="#" /></div>
     </div>

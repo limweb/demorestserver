@@ -33,7 +33,9 @@ const Authfacebook = () => import("./pages/authfacebook.js");
 const Authgoogle = () => import("./pages/authgoogle.js");
 const LockScreen = () => import("./pages/lockscreen.js");
 const Recoverpass  = () => import("./pages/recoverpass.js");
+const Testinput = ()=>import("./pages/testinput.js");
 export default [
+  { path: "/test", name: "Testinput", component: Testinput, meta: { requiresAuth: false, layout: "testlayout" } },
   { path: "/index", name: "Index", component: Main, meta: { requiresAuth: false, layout: "mainlayout" } },
   { path: "/home", name: "Home", component: Main, meta: { requiresAuth: false, layout: "mainlayout" } },
   { path: "/login", name: "Login", component: Login, meta: { requiresAuth: false, layout: "loginlayout" } },

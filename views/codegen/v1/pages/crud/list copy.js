@@ -123,7 +123,7 @@ export default {
                         <td class="text-center " colspan="8" ><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>&nbsp;LOADING.....!</td>
                     </tr>
                     <template v-if="datas.length>0"  v-for="(item,idx) in datas" :key="idx">
-                        <tr :class="[item.inline ? 'border-2 border-green-300 ':'']">
+                        <tr :class="[item.inline ? 'border border-green-300 ':'']">
                             <td  class="accordion-toggle collapsed" style="cursor:pointer;" data-toggle="collapse" :data-target="'#accordion'+idx" >
                                 <span class="expand-button"></span>
                             </td>

@@ -1,17 +1,33 @@
 export default { 
-    template: `<abel>Date:<input type="date" /></label>`, 
+    inheritAttrs: false, 
+    template: ` 
+    <input 
+       type="date"
+       class="w-full p-2 border border-black"  
+       v-bind="$attrs" 
+       :class="$attrs.className"  
+       :style="$attrs.styleName" 
+       :value="value" 
+       @input="updateValue($event.target.value)"  
+    />       
+    `,
     mixins: [], 
+    props:["value"], 
     data() { 
       return { 
           theme: 'AdminLte', 
-          name: 'InputDate', 
+          name: 'Input_date', 
       }; 
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
     }, 
-    mounted() {}, 
-    methods: {}, 
+    methods: { 
+       updateValue(value){ 
+         this.$emit('input',value) 
+       }         
+    }, 
     computed: {}, 
+    mounted() {}, 
     components:{} 
 }; 

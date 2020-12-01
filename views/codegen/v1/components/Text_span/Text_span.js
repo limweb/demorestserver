@@ -1,6 +1,7 @@
 export default { 
-    template: `<span>SPAN</span>`, 
+    template: `<span class="w-full h-10 p-2 border border-black">{{value}}</span>`, 
     mixins: [], 
+    props:['value'],
     data() { 
       return { 
           theme: 'AdminLte', 

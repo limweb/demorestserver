@@ -1,11 +1,11 @@
 export default {
   template: `
     <select
-        class="form-control"
-        :class="'w-2/4'"
+        class="w-2/4 form-control"
+        v-bind="$attrs" 
         :value="value"
-        :placeholder="placeholder"
-        :required="required"
+        :class="$attrs.className"  
+        :style="$attrs.styleName" 
         @change="updateValue($event.target.value)" 
     >
         <option value="" >---select year---</option>

@@ -1,6 +1,6 @@
 export default { 
     template: `
-    <div>
+    <div class="border border-black ">
         <label>
             Upload:
             <input type="file"  />

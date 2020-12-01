@@ -3,7 +3,7 @@ export default {
     <div> 
         <h1 class="font-blod">{{label}}:</h1>
         <input                   
-            class="bg-yellow-200 border-2 rounded input"
+            class="bg-yellow-200 border rounded input"
             type="text"
             :id="id"
             :placeholder="label"

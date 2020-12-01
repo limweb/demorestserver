@@ -1,6 +1,7 @@
 export default { 
-    template: `<label>Label</label>`, 
+    template: `<label class="w-full h-10 p-2 border border-black">{{label}}</label>`, 
     mixins: [], 
+    props:['label'],
     data() { 
       return { 
           theme: 'AdminLte', 

@@ -2,7 +2,7 @@ export default {
     inheritAttrs: false,
     template: `
     <textarea 
-        class="w-full h-16 p-2 rounded border-1" 
+        class="w-full h-16 p-2 border border-black rounded" 
         :value="value"
         @input="updateValue($event.target.value)" 
         v-bind="$attrs"

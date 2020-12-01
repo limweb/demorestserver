@@ -50,6 +50,7 @@
     import Mainlayout from './layout/mainlayout.js';
     import Loginlayout from './layout/loginlayout.js';
     import Lockscreenlayout from './layout/lockscreenlayout.js';
+    import Testlayout from './layout/testlayout.js';
     window.vm = new Vue({
     store,
     router,
@@ -80,7 +81,8 @@
     components:{
         mainlayout:Mainlayout,
         loginlayout:Loginlayout,
-        lockscreenlayout:Lockscreenlayout
+        lockscreenlayout:Lockscreenlayout,
+        testlayout:Testlayout,
     },
     // render : h => h(App),
     beforeCreate  () { /* console.log('beforeCreate'); */ },

@@ -34,9 +34,7 @@
         import Input_month  from "./Input_month/Input_month.js";
         import Input_year  from "./Input_year/Input_year.js";
         import Input_datetime  from "./Input_datetime/Input_datetime.js";
-        import VDatepicker  from "./Datepicker/Datepicker.js";
-        import Vue1jsDatepicker  from "./Datepicker/VuejsDatepicker.js";
-        import Vue3Datepicker  from "./Datepicker/vuejs2-datetimepicker.js";
+
 
         import Textarea  from "./Textarea/Textarea.js";
         import Htmleditor  from "./Htmleditor/Htmleditor.js";
@@ -44,18 +42,12 @@
         import Maskdown_editor  from "./Maskdown_editor/Maskdown_editor.js";
         import Input_color  from "./Input_color/Input_color.js";
         import Colorpicker  from "./Colorpicker/Colorpicker.js";
-        import Navbar  from "./Navbar/Navbar.js";
-        import Header  from "./Header/Header.js";
         import Editable  from "./Editable/Editable.js";
         import Combobox  from "./Combobox/Combobox.js";
         import itemtemplate  from "./Combobox/itemtemplate.js";
         import Thaiaddress from "./thaiaddress/Thaiaddress.js";
         import Thaiaddressone from "./thaiaddress/Thaiaddressone.js";
-        import * as Vue2Datepicker from 'https://cdn.pika.dev/vuejs2-datetimepicker@^1.6.3';
         import Twtypeaheadbasic from "./twitter/Typeahead_basic.js";
-        import Datepicker from
-        "./vuejs2-datetimepicker/components/Datepicker.js";
-        import * as Vue5Datetimepicker from 'https://cdn.pika.dev/vue2-datepicker@^3.3.0';
 
         import v2Datepicker from "./datepicker.js";
         import v2Daterangpicker from "./daterangpicker.js";
@@ -87,7 +79,6 @@
             'input_number' : Input_number,
             'input_email' : Input_email,
             'input_image' : Input_image,
-            'input_number' : Input_number,
             'input_password' : Input_password,
             'input_range' : Input_range,
             'input_tel' : Input_tel,
@@ -100,7 +91,6 @@
             'input_week' : Input_week,
             'input_month' : Input_month,
             'input_datetime' : Input_datetime,
-            'vdatepicker' : VDatepicker,
             'Textarea' : Textarea,
             'htmleditor' : Htmleditor,
             'json_editor' : Json_editor,
@@ -109,8 +99,6 @@
             'colorpicker' : Colorpicker,
             'myfooter': () => import('./Footer/Footer.js'),
             'test': Test,
-            'Header': Header,
-            'navbar': Navbar,
             'input_id': Input_id,
             'input_day': Input_day,
             'input_year': Input_year,
@@ -120,11 +108,6 @@
             // 'v-select': VueSelect.VueSelect,
             'v-datalist': Datalist,
             'v-typeahead': Typeahead,
-            'vue2-datapicker': Vue2Datepicker.default,
-            'vue3-datapicker': Vue3Datepicker,
-            'vue1-datapicker': Vue1jsDatepicker,
-            'vue4-datapicker': Datepicker,
-            'vue5-datapicker': Vue5Datetimepicker.default,
             'thaiaddress': Thaiaddress,
             'thaiaddressone': Thaiaddressone,
             'twtypeaheadbasic': Twtypeaheadbasic,

@@ -9,16 +9,17 @@ export default {
       </li>
     </ul>
     <div class="ml-3 form-inline">
+      <div class="bg-green-200 md:bg-yellow-200 lg:bg-indigo-200 xl:bg-red-200"> {{breakpoint}}/{{window.width}} &nbsp;&nbsp; </div>
       <div class="input-group input-group-sm">
         DB: {{$store.state.dbname}}&nbsp;&nbsp;
         <select v-model="$store.state.dbname" @change="selectdb">
-          <option value="">---- select-database-----</option>
+          <option value="">- select-database-</option>
           <option v-for="(db,idx) in $store.state.databases" :value="db.Database">{{db.Database}}</option>
         </select>
         &nbsp;&nbsp;TB:{{this.$store.state.table}}&nbsp;&nbsp;
         <select v-model="$store.state.table" >
-          <option value="">--- select-table-----</option>
-          <option value="ALL">--- all-tables-----</option>
+          <option value="">-- select-table-</option>
+          <option value="ALL">-- all-tables-</option>
           <option v-for="(tb,idx) in $store.state.tables" :value="tb.table">{{tb.table}}</option>
         </select>
       </div>
@@ -35,7 +36,7 @@ export default {
           </div>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
-            <!-- Message Start -->
+            <!- Message Start ->
             <div class="media">
               <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="mr-3 img-size-50 img-circle">
               <div class="media-body">
@@ -47,7 +48,7 @@ export default {
                 <p class="text-sm text-muted"><i class="mr-1 far fa-clock"></i> 4 Hours Ago</p>
               </div>
             </div>
-            <!-- Message End -->
+            <!- Message End ->
           </a>
           <div class="dropdown-divider"></div>
           <router-link to="/profile" class="dropdown-item">
@@ -76,6 +77,10 @@ export default {
       return { 
           theme: 'AdminLte', 
           name: 'Header', 
+          window: {
+              width: 0,
+              height: 0
+          }           
       }; 
     }, 
     methods: {
@@ -87,11 +92,41 @@ export default {
              this.$store.state.tables = rs.data.datas.tables
           }).catch(console.error);
         },
+        handleResize() {
+            this.window.width = window.innerWidth;
+            this.window.height = window.innerHeight;
+        }
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
+      window.addEventListener("resize", this.handleResize);
+      this.handleResize(); 
     }, 
     mounted() {}, 
-    computed: {}, 
+    computed: {
+        breakpoint() {
+            if (this.window.width > 2014) {
+                return '-xl(2014px)';
+            } else if (this.window.width > 1920) {
+                return '-xl2014px)';
+            } else if (this.window.width > 1600) {
+                return '-xl(1920px)';
+            } else if (this.window.width > 1500) {
+                return '-xl16(1600px)';
+            } else if (this.window.width > 1280) {
+                return '-xl15(1536px)';
+            } else if (this.window.width > 1024) {
+                return "-xl(1280px)";
+            } else if (this.window.width > 768) {
+                return "-lg(1024px)";
+            } else if (this.window.width > 640) {
+                return "-md(768px)";
+            } else {
+                return "-sm(640px)"; 
+            }
+         }
+    }, 
     components:{} 
 }; 
+
+

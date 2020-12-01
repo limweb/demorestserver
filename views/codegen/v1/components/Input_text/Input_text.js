@@ -1,28 +1,33 @@
 export default { 
-    inheritAttrs: false,    
-    template: `
-      <input type="text" 
-        class="w-full p-2"
-        :value="value"
-        @input="updateValue($event.target.value)" />
-    `, 
+    inheritAttrs: false, 
+    template: ` 
+    <input 
+       type="text"
+       class="w-full p-2 border border-black"  
+       v-bind="$attrs" 
+       :class="$attrs.className"  
+       :style="$attrs.styleName" 
+       :value="value" 
+       @input="updateValue($event.target.value)"  
+    />       
+    `,
     mixins: [], 
-    props:['value'],
+    props:["value"], 
     data() { 
       return { 
           theme: 'AdminLte', 
-          name: 'Inputtext', 
+          name: 'Input_text', 
       }; 
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
     }, 
-    methods: {
-      updateValue(value){
-        this.$emit('input',value)
-      }
+    methods: { 
+       updateValue(value){ 
+         this.$emit('input',value) 
+       }         
     }, 
-    mounted() {}, 
     computed: {}, 
+    mounted() {}, 
     components:{} 
 }; 

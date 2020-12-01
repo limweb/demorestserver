@@ -1,17 +1,33 @@
 export default { 
-    template: `<div><label>Password:<input type="password" /></label></div>`, 
+    inheritAttrs: false, 
+    template: ` 
+    <input 
+       type="password"
+       class="w-full p-2 border border-black"  
+       v-bind="$attrs" 
+       :class="$attrs.className"  
+       :style="$attrs.styleName" 
+       :value="value" 
+       @input="updateValue($event.target.value)"  
+    />       
+    `,
     mixins: [], 
+    props:["value"], 
     data() { 
       return { 
           theme: 'AdminLte', 
-          name: 'Inputpassword', 
+          name: 'Input_password', 
       }; 
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
     }, 
-    mounted() {}, 
-    methods: {}, 
+    methods: { 
+       updateValue(value){ 
+         this.$emit('input',value) 
+       }         
+    }, 
     computed: {}, 
+    mounted() {}, 
     components:{} 
 }; 

@@ -17,5 +17,19 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://unpkg.com/vue2-datepicker@3.8.1/index.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/print.css">
+  <style>
+
+.toggle__dot {
+  top: -.25rem;
+  left: -.25rem;
+  transition: all 0.3s ease-in-out;
+}
+
+input:checked ~ .toggle__dot {
+  transform: translateX(100%);
+  background-color: #48bb78;
+}
+  </style>
 </head>
+
 <body class="hold-transition sidebar-mini">

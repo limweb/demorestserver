@@ -1,22 +1,37 @@
 export default { 
-    template: `
-    <label>{{label}}
-    <input type='checkboxx' />
-    </label
-    `, 
+    inheritAttrs: false, 
+    template: ` 
+    <label>
+      <input 
+        type="checkbox" 
+        v-model="chk" 
+        class="mr-6 align-top" 
+        v-bind="$attrs"
+        @change="updateValue($event.target.value)"  
+      />
+      {{label}}
+    </label>
+    `,
     mixins: [], 
+    props:["value","label"], 
     data() { 
       return { 
+          chk: false,
           theme: 'AdminLte', 
-          name: 'Check Box', 
-          label:"Label:"
+          name: 'Input_checkbox', 
       }; 
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
+      this.chk = this.value;
     }, 
-    mounted() {}, 
-    methods: {}, 
+    methods: { 
+       updateValue(value){ 
+         console.log('updateval--->',value,this.chk);
+         this.$emit('input',this.chk) 
+       }         
+    }, 
     computed: {}, 
+    mounted() {}, 
     components:{} 
 }; 

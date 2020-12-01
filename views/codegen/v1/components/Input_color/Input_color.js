@@ -1,32 +1,33 @@
 export default { 
-    inheritAttrs: false,  
-    template: `
-    <label>Color:
-        <input 
-            type="color"  
-            :value="value"
-            v-on="$listeners"
-            @input="updateValue($event)"
-            />
-    </label>
+    inheritAttrs: false, 
+    template: ` 
+    <input 
+       type="color"
+       class="w-full p-2"  
+       v-bind="$attrs" 
+       :class="$attrs.className"  
+       :style="$attrs.styleName" 
+       :value="value" 
+       @input="updateValue($event.target.value)"  
+    />       
     `,
-    props:['label','value'],
     mixins: [], 
+    props:["value"], 
     data() { 
       return { 
           theme: 'AdminLte', 
-          name: 'InputColor', 
+          name: 'Input_color', 
       }; 
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
     }, 
-    methods: {
-      updateValue(evt){
-          this.$emit('input', evt.target.value)
-      }
+    methods: { 
+       updateValue(value){ 
+         this.$emit('input',value) 
+       }         
     }, 
-    mounted() {}, 
     computed: {}, 
+    mounted() {}, 
     components:{} 
 }; 

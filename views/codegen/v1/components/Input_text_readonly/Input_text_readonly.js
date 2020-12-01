@@ -1,5 +1,5 @@
 export default { 
-    template: `<div class="w-full h-full">{{value}}</div>`, 
+    template: `<div class="w-full h-full p-2">{{value}}</div>`, 
     mixins: [],
     props:['value'], 
     data() { 

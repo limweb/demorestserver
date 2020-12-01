@@ -11,7 +11,7 @@ export default {
     </div>
     <form class="lockscreen-credentials">
       <div class="input-group">
-        <input type="password" class="form-control" placeholder="password">
+        <input type="password" class="form-control" v-model="password" placeholder="password">
 
         <div class="input-group-append">
           <button type="button" class="btn"><i class="fas fa-arrow-right text-muted" @click="gotohome"></i></button>
@@ -23,7 +23,7 @@ export default {
     Enter your password to retrieve your session
   </div>
   <div class="text-center">
-    <a href="login.html">Or sign in as a different user</a>
+    <router-link to="/login">Or sign in as a different user</router-link>
   </div>
   <div class="text-center lockscreen-footer">
     Copyright &copy; 2014-2019 <b><a href="#" class="text-black">Accman co.,ltd.</a></b><br>
@@ -35,6 +35,7 @@ export default {
       return { 
           theme: 'AdminLte', 
           name: 'Lock Screen', 
+          password:'',
       }; 
     }, 
     created() { 
@@ -42,7 +43,11 @@ export default {
     }, 
     methods: {
         gotohome(){
-            this.$router.push('/crud');
+            if(this.password == '1234'){
+              this.$router.back();
+            } else {
+              this.$message.info('รหัสผ่านไม่ถูกต้อง');
+            }
         },
     }, 
     computed: {}, 
