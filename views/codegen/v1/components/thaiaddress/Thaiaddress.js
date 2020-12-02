@@ -2,26 +2,26 @@
 export default { 
     template: `
         <div>
-            <div :id="uuid" class="demo" :style="{display: isShow }" autocomplete="off" uk-grid >
-                <div class="uk-width-1-2@m">
-                    <label class="">ตำบล / แขวง</label>
-                    <input name="district" class="uk-input uk-width-1-1"
-                    type="text" :value="value.district" >
+            <div :id="uuid" class="w-full px-2 py-2 border border-black " :style="{display: isShow }" autocomplete="off" uk-grid >
+                <div class="flex">
+                    <div  class="w-2/6 mt-2 mr-3 text-lg text-right">ตำบล / แขวง</div>
+                    <div  class="w-4/6"><input name="district" class="w-full p-2 border-b border-black"
+                    type="text" :value="value.district" ></div>
                 </div>
-                <div class="uk-width-1-2@m">
-                    <label class="">อำเภอ / เขต</label>
-                    <input name="amphoe" class="uk-input uk-width-1-1"
-                    type="text" :value="value.amphoe">
+                <div class="flex">
+                    <div  class="w-2/6 mt-2 mr-3 text-lg text-right">อำเภอ / เขต</div>
+                    <div  class="w-4/6"><input name="amphoe" class="w-full p-2 border-b border-black"
+                    type="text" :value="value.amphoe"></div>
                 </div>
-                <div class="uk-width-1-2@m">
-                    <label class="">จังหวัด</label>
-                    <input name="province" class="uk-input uk-width-1-1"
-                    type="text" :value="value.province">
+                <div class="flex">
+                    <div class="w-2/6 mt-2 mr-3 text-lg text-right">จังหวัด</div>
+                    <div class="w-4/6"><input name="province" class="w-full p-2 border-b border-black"
+                    type="text" :value="value.province"></div>
                 </div>
-                <div class="uk-width-1-2@m">
-                    <label class="">รหัสไปรษณีย์</label>
-                    <input name="zipcode" class="uk-input uk-width-1-1"
-                    type="text" :value="value.zipcode">
+                <div class="flex"> 
+                    <div  class="w-2/6 mt-2 mr-3 text-lg text-right">รหัสไปรษณีย์</div>
+                    <div  class="w-4/6"><input name="zipcode" class="w-full p-2 border-b border-black"
+                    type="text" :value="value.zipcode"></div>
                 </div>
             </div>
         </div>

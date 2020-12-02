@@ -1,15 +1,16 @@
 export default { 
     inheritAttrs: false, 
     template: ` 
-    <input 
-       type="color"
-       class="w-full p-2"  
-       v-bind="$attrs" 
-       :class="$attrs.className"  
-       :style="$attrs.styleName" 
-       :value="value" 
-       @input="updateValue($event.target.value)"  
-    />       
+    <div class="h-8 px-2 border border-black w-min ">
+      <input 
+        type="color"
+        class=""  
+        v-bind="$attrs" 
+        :value="value" 
+        @input="updateValue($event.target.value)"  
+      />      
+      <span>{{value}}</span>
+    </div>
     `,
     mixins: [], 
     props:["value"], 

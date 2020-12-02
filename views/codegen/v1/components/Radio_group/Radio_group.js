@@ -1,8 +1,8 @@
 export default { 
     template: `
      <div class="flex">
-      <label v-for="(v,idx) in values " :for="v.value">
-        <input type="radio" :id="v.value" :value="v.value" v-model="picked" class="mr-2" :name="$attrs?.name"  @change="updateValue">
+      <label v-for="(v,idx) in values " :for="[uuid+v.value]" class="mr-3">
+        <input type="radio" :id="[uuid+v.value]" :value="v.value" v-model="picked" class="mr-2" :name="$attrs?.name"  @change="updateValue">
           {{v.label}}
       </label>
      </div>
@@ -22,11 +22,13 @@ export default {
       return { 
           theme: 'AdminLte', 
           name: 'Radiogroup', 
-          picked:''
+          picked:'',
+          uuid:'',
       }; 
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
+      this.uuid ='idx'+Math.random().toString(36).slice(-6);
     }, 
     mounted() {
       this.picked = this.value;

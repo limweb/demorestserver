@@ -3,7 +3,7 @@ export default {
     template: ` 
     <div>
         <label class="radio">
-          <input type="radio" :value="label" :name="name" v-model="radioButtonValue">
+          <input type="radio" :value="label" :name="uuid" v-model="radioButtonValue">
           <span>{{ label }}</span>
     </label></div>
     `,
@@ -12,11 +12,13 @@ export default {
     data() { 
       return { 
           theme: 'AdminLte', 
-          name: 'Input_radio', 
+          name: 'Input_radio',
+          uuid:'', 
       }; 
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
+      this.uuid ='idx'+Math.random().toString(36).slice(-6);
     }, 
     methods: { 
        updateValue(value){ 

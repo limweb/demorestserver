@@ -39,10 +39,9 @@
 
         import Textarea  from "./Textarea/Textarea.js";
         import Htmleditor  from "./Htmleditor/Htmleditor.js";
-        import Json_editor  from "./Json_editor/Json_editor.js";
-        import Maskdown_editor  from "./Maskdown_editor/Maskdown_editor.js";
+        import Htmlbubbleeditor  from "./Htmleditor/Htmlbubbleeditor.js";
+
         import Input_color  from "./Input_color/Input_color.js";
-        import Colorpicker  from "./Colorpicker/Colorpicker.js";
         import Editable  from "./Editable/Editable.js";
         
         import Thaiaddress from "./thaiaddress/Thaiaddress.js";
@@ -94,10 +93,8 @@
             'input_datetime' : Input_datetime,
             'Textarea' : Textarea,
             'htmleditor' : Htmleditor,
-            'json_editor' : Json_editor,
-            'maskdown_editor' : Maskdown_editor,
+            'htmlbubbleeditor' : Htmlbubbleeditor,
             'input_color' : Input_color,
-            'colorpicker' : Colorpicker,
             'input_id': Input_id,
             'input_day': Input_day,
             'input_daynum': Input_daynum,

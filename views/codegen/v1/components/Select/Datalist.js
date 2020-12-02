@@ -1,5 +1,5 @@
 //  <v-datalist 
-//     datas="[]" 
+//     values="[]" 
 //     label="label" 
 //     valkey="value" 
 //     connector="-" 
@@ -10,17 +10,17 @@
 //     />
  
  export default { 
-   template: `<div> 
+   template: `<div class="w-full h-10 border border-black"> 
                 <input :list="uuid" 
-                    class="form-control" 
-                    style="width:300px;" 
-                    :value="xdata"
+                    class="w-full h-10 p-2" 
+                    :value="value"
                     @input="updateValue($event.target.value)"
+                    v-bind="$attrs"
                     >
                 <datalist :id="uuid"  >
                     <option value="">--select รายการ--</option>
-                    <option v-for="(item,idx) in datas" :key="idx"
-                    :value="item[valkey] + connector + item[label]">{{item[valkey]}}{{connector}}{{item[label]}}</option>
+                    <option v-for="(item,idx) in values" :key="idx"
+                    :value="item[valkey]">{{item[valkey]}}{{connector}}{{item[label]}}</option>
                 </datalist>
          </div>`, 
    mixins: [], 
@@ -29,7 +29,7 @@
        type: [Number,String,Object],
        default: '', 
      }, 
-     datas:{
+     values:{
        type: Array,
        default:[]
      },
@@ -74,19 +74,19 @@
      } 
    }, 
    computed: {
-       xdata: {
-           get:()=>{
-               let item = this?.datas.find(item=>item[this.valkey] == this.value);
-               if(item){
-                    return item[this.valkey] + this.connector + item[this.label];
-               } else {
-                   return '';
-               }
-           },
-           set:(val)=>{
-               this.value = val;  
-           }
-       }
+      //  xdata: {
+      //      get:()=>{
+      //          let item = this?.datas.find(item=>item[this.valkey] == this.value);
+      //          if(item){
+      //               return item[this.valkey] + this.connector + item[this.label];
+      //          } else {
+      //              return '';
+      //          }
+      //      },
+      //      set:(val)=>{
+      //          this.value = val;  
+      //      }
+      //  }
    }, 
    created() { 
      console.log(this.name + 'component is created',this); 

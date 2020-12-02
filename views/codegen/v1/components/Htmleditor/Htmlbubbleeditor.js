@@ -23,7 +23,7 @@ export default {
           message: 'Hi from Vue.',
           content: '',
           editorOption: {
-            theme: 'snow'
+            theme: 'bubble'
           },
       }; 
     }, 

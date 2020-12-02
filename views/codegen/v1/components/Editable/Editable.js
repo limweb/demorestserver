@@ -1,9 +1,9 @@
 //  <Editable v-model="message"  placeholder="Type aaasomething..."></Editable>
 
 export default { 
-  template: `<div 
-  				contenteditable="true" 
-  				v-once 
+  template: `<div class="w-full h-auto p-2 border border-black "
+  				      contenteditable="true" 
+  				      v-once 
               	v-html="value" 
               	:value="value" 
               	@input="updateValue">

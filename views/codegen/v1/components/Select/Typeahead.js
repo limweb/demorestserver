@@ -1,24 +1,26 @@
  import autocomplete from "../../util/autocompleter.js"
 
   //---------- วิธีใช้ ----------------
-    // <v-typeahead
-    //     placeholder="เลือกรายการสินค้า" 
-    //     v-model="test"
-    //     :datas="customers"  // datas สำหรับให้เลือก
-    //     valkye="id"  // key ที่จะแปลงเป็น id 
-    //     :lblfunc="this.myname"  // key ที่จะแปลงเป็น label  ซึ่งใช้  text หรือ function ก็ได้
-    //     >
+  // <v-typeahead
+  //     placeholder="เลือกรายการสินค้า" 
+  //     v-model="test"
+  //     :datas="customers"  // datas สำหรับให้เลือก
+  //     valkye="id"  // key ที่จะแปลงเป็น id 
+  //     :lblfunc="this.myname"  // key ที่จะแปลงเป็น label  ซึ่งใช้  text หรือ function ก็ได้
+  //     >
 
 
 
  export default { 
+   inheritAttrs: false, 
    template: `<div> 
-        <input  
+        <input
+              class="w-full h-10 p-2 border border-black"
+              v-bind="$attrs"  
               ref="inputRef"
               :placeholder="placeholder" 
               :value="selectvalue"
               type="text" 
-              class="input"
         />
    </div>`, 
    mixins: [], 
@@ -33,15 +35,15 @@
      }, 
      datas:{
        type: Array, 
-       default: [],
+       default: []
      },
      valkey:{
        type: String,
-       default: 'id'
+       default: 'value'
      },
      lblfunc:{
        type: [String,Function],
-       default: null
+       default: 'label'
      },
      required: { 
        type: Boolean, 
@@ -52,7 +54,7 @@
      return { 
        theme: 'AdminLte', 
        name: 'TypeAhead',
-       selectvalue: 0,
+       selectvalue: '',
        selectlabel: '' 
      }; 
    }, 
@@ -64,6 +66,7 @@
    }, 
    computed: {
       lists(){
+          console.log('datas--->',this.datas);
           if(this.datas){
             return this.datas.map(item => {
                 let label = '';
@@ -82,14 +85,16 @@
       }
    }, 
    created() { 
-     console.log(this.name + 'component is created'); 
+       console.log('typeahead is create--->');
+       this.selectvalue = this.value;
    }, 
    mounted() {
+      console.log('datas--->',this.datas);
       this.autocompleteRef = autocomplete({
           input: this.$refs.inputRef,
           minLength: 1,
           emptyMsg: 'No matched items found',
-
+      
           fetch: (text, update)=>{
               console.log('-----start---autocomplete---',this.lists);
               const pattern = new RegExp(text, 'i')
@@ -98,7 +103,7 @@
                 })
               update(suggestions)
           },
-
+      
           onSelect: ({ id, label }) => {
               this.selectid = id
               this.selectvalue = label

@@ -46,6 +46,8 @@
         console.log('----register----> ',key);
         Vue.component(key,GlobalComponents[key]);
     })
+        
+    Vue.use(VueQuillEditor)
 
     import Mainlayout from './layout/mainlayout.js';
     import Loginlayout from './layout/loginlayout.js';

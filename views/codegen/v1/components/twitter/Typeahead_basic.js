@@ -18,8 +18,8 @@
 
 export default { 
     template: `
-        <div id="the-basics">
-            <input class="typeahead" type="text" :placeholder="placeholder">
+        <div id="the-basics" class="w-full h-10 border border-black">
+            <input class="w-full h-10 p-2 typeahead" type="text" :placeholder="placeholder">
         </div>
     `,
     props:{

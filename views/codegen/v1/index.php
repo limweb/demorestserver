@@ -5,6 +5,13 @@
 <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
 <!-- <script src='https://unpkg.com/vue2-datepicker@3.8.1/index.min.js'></script> -->
 
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-quill-editor@3.0.6/dist/vue-quill-editor.js"></script>
+<link href="https://cdn.quilljs.com/1.3.4/quill.core.css" rel="stylesheet">
+<link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
+<link href="https://cdn.quilljs.com/1.3.4/quill.bubble.css" rel="stylesheet">
+
 <?php 
   $url = $this->server->root.'/views/'.$this->viewpath;
   $viewpath = $this->server->root.$this->viewpath;

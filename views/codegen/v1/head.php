@@ -29,7 +29,20 @@ input:checked ~ .toggle__dot {
   transform: translateX(100%);
   background-color: #48bb78;
 }
-  </style>
-</head>
 
+.quill-editor,
+.content {
+  background-color: white;
+}
+
+.ql-toolbar {
+    display: flex;
+    -ms-flex-wrap: wrap!important;
+    flex-wrap: wrap!important;
+}
+
+</style>
+</head>
 <body class="hold-transition sidebar-mini">
+
+
