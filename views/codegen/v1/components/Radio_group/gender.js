@@ -1,9 +1,18 @@
 export default { 
     template: `
      <div class="flex">
-      <label v-for="(v,idx) in values " :for="v.value">
-        <input type="radio" :id="v.value" :value="v.value" v-model="picked" class="mr-2" :name="$attrs?.name"  @change="updateValue">
-          {{v.label}}
+      <p>Please select your gender:</p>
+      <label for="M">
+        <input type="radio" id="M" value="M" v-model="picked" class="mr-2" name="gender"  @change="updateValue">
+          Male
+      </label>
+      <label for="F">
+        <input type="radio" id="F" value="F" v-model="picked" class="mr-2" name="gender"  @change="updateValue">
+         Female 
+      </label>
+      <label for="other">
+        <input type="radio" id="other" value="other" v-model="picked" class="mr-2" name="gender"  @change="updateValue">
+         Other 
       </label>
      </div>
     `,  

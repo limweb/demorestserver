@@ -4,6 +4,7 @@
 <link href="/dist/css/tailwind.min.css" rel="stylesheet">
 <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
 <!-- <script src='https://unpkg.com/vue2-datepicker@3.8.1/index.min.js'></script> -->
+
 <?php 
   $url = $this->server->root.'/views/'.$this->viewpath;
   $viewpath = $this->server->root.$this->viewpath;
@@ -19,6 +20,12 @@
 </script>
 <script type='module' src="<?=$url?>/main.js"></script>
 <?php include_once __DIR__.'/footer.php'; ?>
+<script>
+    // window.addEventListener('devtoolschange', function(e) {
+    //     console.log('is DevTools open?', e.detail.open);
+    //     alert('console.is.open');
+    // });
+</script>
 <style>
   
   tr.hide-table-padding td {
@@ -102,4 +109,5 @@ element.style {
     -webkit-box-sizing:border-box;
     -moz-box-sizing: border-box;
   }
+
 </style>

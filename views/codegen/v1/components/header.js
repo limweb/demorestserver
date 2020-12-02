@@ -9,7 +9,7 @@ export default {
       </li>
     </ul>
     <div class="ml-3 form-inline">
-      <div class="bg-green-200 md:bg-yellow-200 lg:bg-indigo-200 xl:bg-red-200"> {{breakpoint}}/{{window.width}} &nbsp;&nbsp; </div>
+      <div class="bg-green-200 sm:bg-gray-300 md:bg-yellow-200 lg:bg-indigo-200 xl:bg-red-200"> {{breakpoint}}/{{window.width}} &nbsp;&nbsp; </div>
       <div class="input-group input-group-sm">
         DB: {{$store.state.dbname}}&nbsp;&nbsp;
         <select v-model="$store.state.dbname" @change="selectdb">
@@ -106,23 +106,23 @@ export default {
     computed: {
         breakpoint() {
             if (this.window.width > 2014) {
-                return '-xl(2014px)';
-            } else if (this.window.width > 1920) {
                 return '-xl2014px)';
-            } else if (this.window.width > 1600) {
+            } else if (this.window.width > 1920) {
                 return '-xl(1920px)';
-            } else if (this.window.width > 1500) {
+            } else if (this.window.width > 1600) {
                 return '-xl16(1600px)';
-            } else if (this.window.width > 1280) {
+            } else if (this.window.width > 1500) {
                 return '-xl15(1536px)';
-            } else if (this.window.width > 1024) {
+            } else if (this.window.width > 1280) {
                 return "-xl(1280px)";
-            } else if (this.window.width > 768) {
+            } else if (this.window.width > 1024) {
                 return "-lg(1024px)";
-            } else if (this.window.width > 640) {
+            } else if (this.window.width > 768) {
                 return "-md(768px)";
+            } else if (this.window.width > 640) {
+                return "-sm(640px)";
             } else {
-                return "-sm(640px)"; 
+                return "-ssm(640px)"
             }
          }
     }, 

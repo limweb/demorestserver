@@ -2,11 +2,9 @@ export default {
     inheritAttrs: false, 
     template: ` 
     <input 
-       type="datetime"
+       type="datetime-local"
        class="w-full p-2 border border-black"  
        v-bind="$attrs" 
-       :class="$attrs.className"  
-       :style="$attrs.styleName" 
        :value="value" 
        @input="updateValue($event.target.value)"  
     />       

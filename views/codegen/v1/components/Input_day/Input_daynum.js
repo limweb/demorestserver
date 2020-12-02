@@ -1,12 +1,10 @@
 export default {
   template: `
     <select
-        class="w-2/4 form-control"
+        class="w-full h-10 border border-black "
         :value="value"
         @change="updateValue($event.target.value)" 
         v-bind="$attrs" 
-        :class="$attrs.className"  
-        :style="$attrs.styleName" 
      >
         <option value="0" >---select day---</option>
         <option value="1" >Monday</option>

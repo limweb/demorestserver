@@ -4,22 +4,22 @@ export default {
         <div>
             <div :id="uuid" class="demo" :style="{display: isShow }" autocomplete="off" uk-grid >
                 <div class="uk-width-1-2@m">
-                    <label class="h2">ตำบล / แขวง</label>
+                    <label class="">ตำบล / แขวง</label>
                     <input name="district" class="uk-input uk-width-1-1"
                     type="text" :value="value.district" >
                 </div>
                 <div class="uk-width-1-2@m">
-                    <label class="h2">อำเภอ / เขต</label>
+                    <label class="">อำเภอ / เขต</label>
                     <input name="amphoe" class="uk-input uk-width-1-1"
                     type="text" :value="value.amphoe">
                 </div>
                 <div class="uk-width-1-2@m">
-                    <label class="h2">จังหวัด</label>
+                    <label class="">จังหวัด</label>
                     <input name="province" class="uk-input uk-width-1-1"
                     type="text" :value="value.province">
                 </div>
                 <div class="uk-width-1-2@m">
-                    <label class="h2">รหัสไปรษณีย์</label>
+                    <label class="">รหัสไปรษณีย์</label>
                     <input name="zipcode" class="uk-input uk-width-1-1"
                     type="text" :value="value.zipcode">
                 </div>

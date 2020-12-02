@@ -1,4 +1,3 @@
-        import Test  from './Test/Test.js';
         import Label  from "./Label/Label.js";
         import Text_span  from "./Text_span/Text_span.js";
         import Input_text_readonly  from "./Input_text_readonly/Input_text_readonly.js";
@@ -7,6 +6,7 @@
         import Input_radio  from "./Input_radio/Input_radio.js";
         import Checkbox_group  from "./Checkbox_group/Checkbox_group.js";
         import Radio_group  from "./Radio_group/Radio_group.js";
+        import Gender  from "./Radio_group/gender.js";
         import Checkbox_group_relation  from "./Checkbox_group_relation/Checkbox_group_relation.js";
         import Radio_group_relation  from "./Radio_group_relation/Radio_group_relation.js";
         import Select_html  from "./Select/Select.js";
@@ -30,6 +30,7 @@
         import Input_time  from "./Input_time/Input_time.js";
         import Input_date  from "./Input_date/Input_date.js";
         import Input_day  from "./Input_day/Input_day.js";
+        import Input_daynum  from "./Input_day/Input_daynum.js";
         import Input_week  from "./Input_week/Input_week.js";
         import Input_month  from "./Input_month/Input_month.js";
         import Input_year  from "./Input_year/Input_year.js";
@@ -43,8 +44,7 @@
         import Input_color  from "./Input_color/Input_color.js";
         import Colorpicker  from "./Colorpicker/Colorpicker.js";
         import Editable  from "./Editable/Editable.js";
-        import Combobox  from "./Combobox/Combobox.js";
-        import itemtemplate  from "./Combobox/itemtemplate.js";
+        
         import Thaiaddress from "./thaiaddress/Thaiaddress.js";
         import Thaiaddressone from "./thaiaddress/Thaiaddressone.js";
         import Twtypeaheadbasic from "./twitter/Typeahead_basic.js";
@@ -69,6 +69,7 @@
             'input_radio' : Input_radio,
             'checkbox_group' : Checkbox_group,
             'radio_group' : Radio_group,
+            'gender' : Gender,
             'checkbox_group_relation' : Checkbox_group_relation,
             'radio_group_relation' : Radio_group_relation,
             'select_html' : Select_html,
@@ -97,14 +98,12 @@
             'maskdown_editor' : Maskdown_editor,
             'input_color' : Input_color,
             'colorpicker' : Colorpicker,
-            'myfooter': () => import('./Footer/Footer.js'),
-            'test': Test,
             'input_id': Input_id,
             'input_day': Input_day,
+            'input_daynum': Input_daynum,
             'input_year': Input_year,
             'editable': Editable,
-            'combobox': Combobox,
-            'itemtemplatex': itemtemplate,
+            
             // 'v-select': VueSelect.VueSelect,
             'v-datalist': Datalist,
             'v-typeahead': Typeahead,

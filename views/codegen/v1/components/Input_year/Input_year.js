@@ -1,14 +1,13 @@
 export default {
   template: `
     <select
-        class="w-2/4 form-control"
+        class="w-full h-10 border border-black"
         v-bind="$attrs" 
         :value="value"
-        :class="$attrs.className"  
-        :style="$attrs.styleName" 
+        v-model="mysalectValue"
         @change="updateValue($event.target.value)" 
     >
-        <option value="" >---select year---</option>
+        <option value="0" >---select year---</option>
         <option value="2000">2000</option>
         <option value="2001">2001</option>
         <option value="2002">2002</option>
@@ -79,23 +78,26 @@ export default {
     },
     required: {
       type: Boolean,
-      default: false
+    default: false
     }
   },
   data() {
     return {
       theme: 'AdminLte',
       name: 'Inputnumber',
+      mysalectValue:''
     };
   },
   created() {
     console.log(this.name + 'component is created');
   },
-  mounted() {},
+  mounted() {
+    this.mysalectValue = this.value;
+  },
   methods: {
     updateValue(value) {
       console.log('----input---');
-      this.$emit('input', value)
+      this.$emit('input', this.mysalectValue)
     }
   },
   computed: {},

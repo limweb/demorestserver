@@ -3,10 +3,8 @@ export default {
     template: ` 
     <input 
        type="number"
-       class="w-full p-2"  
+       class="w-full p-2 border border-black"  
        v-bind="$attrs" 
-       :class="$attrs.className"  
-       :style="$attrs.styleName" 
        :value="value" 
        @input="updateValue($event.target.value)"  
        readonly

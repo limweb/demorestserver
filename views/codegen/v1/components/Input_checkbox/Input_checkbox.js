@@ -5,7 +5,7 @@ export default {
       <input 
         type="checkbox" 
         v-model="chk" 
-        class="mr-6 align-top" 
+        class="mr-3 align-top" 
         v-bind="$attrs"
         @change="updateValue($event.target.value)"  
       />
