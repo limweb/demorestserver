@@ -2,6 +2,7 @@ export default {
     template: `
       <div>
         <button
+          class="fixed z-50 hidden w-12 h-12 text-center text-white bg-red-700 border-0 rounded outline-none cursor-pointer right-5 bottom-5 hover:bg-gray-300 hover:text-red-500"
           :style="{display: show ? 'block':'none'}"
           @click="topFunction"
           id="myBtn"
@@ -21,7 +22,7 @@ export default {
       console.log( this.name + 'component is created'); 
     }, 
     mounted() {
-      window.addEventListener("scroll", this.scrollFunction);
+       window.addEventListener("scroll", this.scrollFunction);
     }, 
     methods: {
       scrollFunction() {
@@ -39,7 +40,7 @@ export default {
     }, 
     computed: {},
     destroyed() {
-      window.removeEventListener("scroll", this.scrollFunction);
+       window.removeEventListener("scroll", this.scrollFunction);
     }, 
     components:{}
 }; 

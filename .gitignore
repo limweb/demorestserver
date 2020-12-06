@@ -1,3 +1,4 @@
 vendor/
 dist/
 plugins/
+node_modules/

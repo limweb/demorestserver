@@ -49,6 +49,18 @@
         
     Vue.use(VueQuillEditor)
 
+
+    import vueLs  from './libs/vue-ls.js';
+
+    let options = {
+        namespace: 'vuejs__', // key prefix
+        name: 'ls', // name variable Vue.[ls] or this.[$ls],
+        storage: 'local', // storage name session, local, memory
+    };
+
+    Vue.use(vueLs, options);
+
+
     import Mainlayout from './layout/mainlayout.js';
     import Loginlayout from './layout/loginlayout.js';
     import Lockscreenlayout from './layout/lockscreenlayout.js';

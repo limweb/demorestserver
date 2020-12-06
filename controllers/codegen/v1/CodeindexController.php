@@ -18,6 +18,7 @@ class CodeindexController  extends CodegenbaseCointroller {
 *@url GET /index
 *@url GET /crud
 *@url GET /test
+*@url GET /googlefrm
 *----------------------------------------------
 *FILE NAME:  CodeindexController.php gen for Servit Framework Controller
 *Created by: Tlen<limweb@hotmail.com>
