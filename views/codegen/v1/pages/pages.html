@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <title>Vue2610-TailwindCss-AXIOS CDN JS </title>
+    <link href='https://unpkg.com/tailwindcss@2.0.1/dist/tailwind.min.css' rel='stylesheet'>
+</head>
+<body>
+<div id='app' class="p-0 m-0 bg-white"> 
+        <table class="w-full report-container">
+            <thead class="report-header ">
+                <tr>
+                    <td class="w-full report-header-cell" colspan="5">
+                        <div class="flex w-full pt-5 header-info" style="height:80px;border-width:5px; border-right-width: 5px;;border-color:white border: 2px solid green;
+">
+                                <div style="  border: 2px solid white;
+ width:20%;background-color: green; color:white;padding-top:20px;padding-left:20px;" calss="w-1/5 bg-blue-100 text-white border text-left px-8 py-4">AAAAAAAAAA</div>
+                                <div style="  border: 2px solid white;
+ width:20%;background-color: green; color:white;padding-top:20px;padding-left:20px;" calss="w-1/5 bg-blue-100 text-white border text-left px-8 py-4">AAAAAAAAAA</div>
+                                <div style="  border: 2px solid white;
+ width:20%;background-color: green; color:white;padding-top:20px;padding-left:20px;" calss="w-1/5 bg-blue-100 text-white border text-left px-8 py-4">AAAAAAAAAA</div>
+                                <div style="  border: 2px solid white;
+ width:20%;background-color: green; color:white;padding-top:20px;padding-left:20px;" calss="w-1/5 bg-blue-100 text-white border text-left px-8 py-4">AAAAAAAAAA</div>
+                                <div style="  border: 2px solid white;
+ width:20%;background-color: green; color:white;padding-top:20px;padding-left:20px;" calss="w-1/5 bg-blue-100 text-white border text-left px-8 py-4">AAAAAAAAAA</div>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <tfoot class="report-footer">
+                <tr>
+                    <td class="report-footer-cell" colspan="5">
+                        <div class="w-full border-t border-black footer-info"  style="background-color: rgb(255, 255, 255); position:fixed;bottom:0px;height:250px;z-index: 10;">
+                                 ิ<br/>Footer 
+                        </div>
+                        <div class="w-full" style="background-color: rgb(255, 255, 255); position: relative; bottom:0px;height:250px;">
+                                 ิ<br/>Footerx
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody class="report-content" >
+                <tr  class="px-5 py-5" v-for="i in 15" :class="{ 'pb': (i%2==0) }"  >
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ab vitae, pariatur odio eligendi, quos nobis veniam ipsam perferendis obcaecati exercitationem commodi at autem quis natus nisi, repellat libero dicta.</td>
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ab vitae, pariatur odio eligendi, quos nobis veniam ipsam perferendis obcaecati exercitationem commodi at autem quis natus nisi, repellat libero dicta.</td>
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ab vitae, pariatur odio eligendi, quos nobis veniam ipsam perferendis obcaecati exercitationem commodi at autem quis natus nisi, repellat libero dicta.</td>
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ab vitae, pariatur odio eligendi, quos nobis veniam ipsam perferendis obcaecati exercitationem commodi at autem quis natus nisi, repellat libero dicta.</td>
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ab vitae, pariatur odio eligendi, quos nobis veniam ipsam perferendis obcaecati exercitationem commodi at autem quis natus nisi, repellat libero dicta.</td>
+                </tr>
+            </tbody>
+    </table>
+    
+</div>	
+<script type='module'>
+    import Vue from 'https://unpkg.com/vue@2.6.10/dist/vue.esm.browser.min.js';
+    // :class="{ 'pb': (i%2==0) }" 
+    window.vm = new Vue({
+    mixins:[],
+    data(){ return {
+        msg:'Hello world',
+        page:0
+    }},
+    el:'#app',
+    methods:{
+        numpage(){
+            return this.page++;
+        }
+    },
+    mounted(){
+        window.print();
+    }
+    })	
+</script>
+<style>
+    table.report-container {
+        page-break-after:always;
+    }
+    thead.report-header {
+        display:table-header-group;
+    }
+    tfoot.report-footer {
+        display:table-footer-group;
+		page-break-inside: avoid; 
+    } 
+    
+     tr {  
+		   page-break-before: always; 
+        }
+        
+     div {
+        page-break-before: always;
+    }
+
+    .pb {
+		page-break-inside: avoid; 
+        page-break-before: always;
+        page-break-after: always;
+    }
+</style>
+</body>
+</html>
