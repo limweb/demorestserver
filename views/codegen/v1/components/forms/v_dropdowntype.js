@@ -3,11 +3,12 @@ export default {
     template: ` 
     <div class="w-full h-40 flex flex-col">
           <div class="w-full border border-black">
-            <input type="text" class="w-full p-2 h-12"  v-model="qtitle" placeholder="short answer" @input="updateValue">
+            <Label :label="value.ques.qtitle" />
           </div>
           <div class="w-full h-12 flex items-end">
-            <span class="border-black border-b"> short answer text </span>
+             <component is="select_relation" v-model="value.answer" lblkey="choice" id="choicex" valkey="choice"  :values="value.ques.choices"  class="flex flex-col" />
           </div>
+          {{value.answer}}
     </div>
     `,
     mixins: [], 
@@ -15,7 +16,7 @@ export default {
     data() { 
       return { 
           theme: 'AdminLte', 
-          name: 'shortanswer', 
+          name: 'Dropdown', 
           uuid: '', 
           qtitle:'',
       }; 
@@ -26,6 +27,12 @@ export default {
       this.qtitle = this.value.qtitle;
     }, 
     methods: { 
+       rmchoice(choice){
+         console.log('choice--->',choice);
+       },
+       addchoice(){
+         this.value.choices.push({ choice:'' })
+       },
        updateValue(){ 
          this.value.qtitle = this.qtitle;
          this.$emit('input',this.value) 

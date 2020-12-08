@@ -12,6 +12,21 @@
         import Monthtype from './forms/monthtype.js';
         import Yeartype from './forms/yeartype.js';
 
+        import vShortanswer from './forms/v_shortanswer.js';
+        import vParagraph from './forms/v_paragraph.js';
+        import vMultiplechoice from './forms/v_multiplechoice.js';
+        import vCheckboxes from './forms/v_checkboxes.js';
+        import vDropdowntype from './forms/v_dropdowntype.js';
+        import vFileupload from './forms/v_fileupload.js';
+        import vLinescale from './forms/v_linescale.js';
+        import vMultipolechoicegrid from './forms/v_multipolechoicegrid.js';
+        import vCheckboxgrid from './forms/v_checkboxgrid.js';
+        import vDatetype from './forms/v_datetype.js';
+        import vTimetype from './forms/v_timetype.js';
+        import vMonthtype from './forms/v_monthtype.js';
+        import vYeartype from './forms/v_yeartype.js';
+
+
         import Tagsedit from './tags/tagsedit.js';
         import Tagsview from './tags/tagsview.js';
         import Totop  from "./Totop/Totop.js";
@@ -81,19 +96,19 @@
         import Printa4table from "./Printa4table.js";
 
         export default  {
-            'shortanswer': Shortanswer,
-            'paragraph': Paragraph,
-            'multiplechoice': Multiplechoice,
-            'checkboxes': Checkboxes,
-            'dropdowntype': Dropdowntype,
-            'fileupload': Fileupload,
-            'linescale': Linescale,
-            'multipolechoicegrid': Multipolechoicegrid,
-            'checkboxgrid': Checkboxgrid,
-            'datetype': Datetype,
-            'timetype': Timetype,
-            'monthtype': Monthtype,
-            'yeartype': Yeartype,
+            'v_shortanswer': vShortanswer,
+            'v_paragraph': vParagraph,
+            'v_multiplechoice': vMultiplechoice,
+            'v_checkboxes': vCheckboxes,
+            'v_dropdowntype': vDropdowntype,
+            'v_fileupload': vFileupload,
+            'v_linescale': vLinescale,
+            'v_multipolechoicegrid': vMultipolechoicegrid,
+            'v_checkboxgrid': vCheckboxgrid,
+            'v_datetype': vDatetype,
+            'v_timetype': vTimetype,
+            'v_monthtype': vMonthtype,
+            'v_yeartype': vYeartype,
 
 
             'avatar':Avata,

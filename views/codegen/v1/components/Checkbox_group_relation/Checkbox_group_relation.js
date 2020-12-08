@@ -1,10 +1,10 @@
 export default { 
     template: `
         <div class="flex w-full p-2 border border-black" :class="$attrs?.class" >
-            <label :for="[uuid+v[valkey]]"v-for="(v,idx) in values" :key="idx" class="mr-4" >
+            <label :for="[uuid+idx]"v-for="(v,idx) in values" :key="idx" class="mr-4" >
                 <input  
                     type="checkbox" 
-                    :id="[uuid+v[valkey]]" 
+                    :id="[uuid+idx]" 
                     :value="v[valkey]" 
                     v-model="myvalues" 
                     class="mr-3" 
@@ -43,7 +43,9 @@ export default {
     created() { 
       console.log( this.name + 'component is created'); 
       this.uuid ='idx'+Math.random().toString(36).slice(-6);
-      this.myvalues = this.value;
+      if(Array.isArray(this.value)){
+        this.myvalues = this.value;
+      }
     }, 
     mounted() {}, 
     methods: {

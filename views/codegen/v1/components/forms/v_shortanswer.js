@@ -3,10 +3,10 @@ export default {
     template: ` 
     <div class="w-full h-40 flex flex-col">
           <div class="w-full border border-black">
-            <input type="text" class="w-full p-2 h-12"  v-model="qtitle" placeholder="short answer" @input="updateValue">
+            <Label :label="value.ques.qtitle" />
           </div>
           <div class="w-full h-12 flex items-end">
-            <span class="border-black border-b"> short answer text </span>
+            <component is="input_text" v-model="value.answer"></component>
           </div>
     </div>
     `,

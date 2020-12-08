@@ -3,11 +3,14 @@ export default {
     template: ` 
     <div class="w-full h-40 flex flex-col">
           <div class="w-full border border-black">
-            <input type="text" class="w-full p-2 h-12"  v-model="qtitle" placeholder="short answer" @input="updateValue">
+            <Label :label="value.ques.qtitle" />
           </div>
           <div class="w-full h-12 flex items-end">
-            <span class="border-black border-b"> short answer text </span>
+            <div class="mr-2">{{value.ques.choices.starttxt}}</div>
+            <component is="radio_group" :values="getvalues()" valkey="value"  v-model="value.ques.answer" />
+            <div class="ml-2">{{value.ques.choices.endtxt}}</div>
           </div>
+          {{value.ques.answer}}
     </div>
     `,
     mixins: [], 
@@ -15,17 +18,29 @@ export default {
     data() { 
       return { 
           theme: 'AdminLte', 
-          name: 'shortanswer', 
+          name: 'Line Scale', 
           uuid: '', 
           qtitle:'',
+          ques:'',
+          numstart:0,
+          numend:10,
       }; 
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
       this.uuid ='idx'+Math.random().toString(36).slice(-6);  
       this.qtitle = this.value.qtitle;
+      this.ques = this.value.choices
     }, 
     methods: { 
+      getvalues(){
+        let rs = [];
+        for(let i=this.value.ques.choices.numstart;i<=this.value.ques.choices.numend;i++) {
+            rs.push({value:i});
+        }
+        console.log('rs--->',rs);
+        return rs;
+      },
        updateValue(){ 
          this.value.qtitle = this.qtitle;
          this.$emit('input',this.value) 

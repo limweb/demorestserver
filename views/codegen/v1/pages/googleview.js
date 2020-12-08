@@ -6,10 +6,10 @@ export default {
     <h1 class="text-3xl">{{$store.state.gform.title}}</h1>
     <h3 class="text-2xl">{{$store.state.gform.description}}</h3>
     <div class="bg-black border-b border-black w-11/12" />
-    <div class="my-2 px-2 py-2 w-3/5 bg-gray-100 shadow rounded border border-black h-40"
+    <div class="my-2 px-2 py-2 w-3/5 bg-gray-100 shadow rounded border border-black"
          v-for="(q,idx) in $store.state.gform.questions"
     >
-            {{idx}}/{{q}}
+         <component :is="q.vis" v-model="q" />
     </div>
         
     </div>

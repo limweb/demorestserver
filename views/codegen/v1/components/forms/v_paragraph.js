@@ -1,12 +1,12 @@
 export default { 
     inheritAttrs: false, 
     template: ` 
-    <div class="w-full h-40 flex flex-col">
+    <div class="w-full flex flex-col">
           <div class="w-full border border-black">
-            <input type="text" class="w-full p-2 h-12"  v-model="qtitle" placeholder="short answer" @input="updateValue">
+            <Label :label="value.ques.qtitle" />
           </div>
-          <div class="w-full h-12 flex items-end">
-            <span class="border-black border-b"> short answer text </span>
+          <div class="w-full flex items-end">
+            <component is="Textarea" v-model="value.answer"></component>
           </div>
     </div>
     `,
@@ -15,7 +15,7 @@ export default {
     data() { 
       return { 
           theme: 'AdminLte', 
-          name: 'shortanswer', 
+          name: 'Paragraph', 
           uuid: '', 
           qtitle:'',
       }; 
