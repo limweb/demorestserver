@@ -36,6 +36,7 @@
 <script type="text/javascript" src="/jquery.Thailand.js/dependencies/JQL.min.js"></script>
 <script type="text/javascript" src="/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
 <script type="text/javascript" src="/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+<script src="/js/fontsize.js"></script>
 <!-- import JavaScript -->
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.14.1/theme-chalk/index.min.css">

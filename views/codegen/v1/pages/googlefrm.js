@@ -1,16 +1,17 @@
-import vueDragable from '../libs/vuedraggable.js';
-
 export default { 
     template: `
-    <div class="w-full bg-gray-200 flex flex-col relative items-center h-full">
-        <div class="bg-gray-100 shadow border relative border-black w-1/2 mt-5 h-52 px-2 py-2 flex flex-col">
-            <div class="w-full ">Title:</div>
-            <div class="w-full ">Description:</div>
-            <div @click="addnewq" v-if="questions.length===0"class="cursor-pointer w-12 h-12 self-center textcenter absolute -bottom-6 border border-gray-400 bg-blue-400 rounded-full shadow  flex items-center justify-center">+</div>
+    <div  class="w-full bg-gray-200 flex flex-col relative items-center h-full">
+        <div><router-link to="/googleview">View</router-link></div>
+        <button class="zoomin">+</button>
+        <button class="zoomout">-</button>
+        <div class="bg-gray-100 shadow border relative border-black w-1/2 mt-5 h-52 px-2 py-2 flex flex-col fontzoom">
+            <div class="w-full flex">Title: &nbsp;&nbsp;      <input class="w-full h-12 p-2" v-model="$store.state.gform.title" type="text"></div>
+            <div class="w-full flex">Description: &nbsp;&nbsp; <input class="w-full h-12 p-2" type="text" v-model="$store.state.gform.description" ></div>
+            <div @click="addnewq" v-if="$store.state.gform.questions.length===0"class="cursor-pointer w-12 h-12 self-center textcenter absolute -bottom-6 border border-gray-400 bg-blue-400 rounded-full shadow  flex items-center justify-center">+</div>
         </div>
 
         <div class="bg-gray-100 shadow border-2 w-1/2 mt-2 px-2 flex flex-col border-l-4 " @click="activeq(idq)"
-             v-for="(question,idq) in questions" :key="idq" 
+             v-for="(question,idq) in $store.state.gform.questions" :key="idq" 
              :style="'border-left-color:'+ activecolor(question) "
               >
                 <div class="bg-gray-100 w-full cursor-pointer">:::</div>
@@ -32,14 +33,14 @@ export default {
                         <option value="yeartype">Year</option>
                     </select>
                 </div>
-                <div class="flex justify-end h-8 items-center mt-2" name="footer">
+                <div class="flex justify-end h-8 items-center mt-2 fontzoom" name="footer">
                     <div @click="cloneq(question,idq)" class="mr-2 -mt-3 cursor-pointer"><i class="far fa-clone mr-2"></i></div>
                     <div @click="removeq(idq)" class="mr-2 -mt-3 cursor-pointer"><i class="fas fa-trash-alt"></i></div>
                     <toggle style="width:60px;" class="mr-2 cursor-pointer" v-model="question.toggle" />
                 </div>
         </div>
-        <div class="relative flex justify-end w-1/2">
-        <div v-if="questions.length>0"style="top: -40px;right:-50px; w-10" 
+        <div class="relative flex justify-end w-1/2 fontzoom">
+        <div v-if="$store.state.gform.questions.length>0"style="top: -40px;right:-50px; w-10" 
                 @click="addnewq"
                 class="cursor-pointer shadow bg-white w-10 h-8 absolute shadow-sm border border-black text-center ">+</div>
         </div>
@@ -52,10 +53,6 @@ export default {
           theme: 'AdminLte', 
           name: 'GOOGLE FORM', 
           uuid: '', 
-          questions:[
-            { is:'shortanswer' , answer:'', ques: { qtitle:'', choices: [] },  active: false, toggle: false},
-            { is:'shortanswer' , answer:'', ques: { qtitle:'', choices: [] },  active: false, toggle: false},
-          ],
       }; 
     }, 
     created() { 
@@ -80,27 +77,27 @@ export default {
         },
         cloneq(q,idx){
             console.log('clone q--->');
-            this.questions.splice(idx, 0,JSON.parse(JSON.stringify(q)));
+            this.$store.state.gform.questions.splice(idx, 0,JSON.parse(JSON.stringify(q)));
             setTimeout(()=>{
-                this.questions.map(q=>q.active=false);
-                this.questions[idx+1].active=true;
-            },100)
+                this.$store.state.gform.questions.map(q=>q.active=false);
+                this.$store.state.gform.questions[idx+1].active=true;
+            },50)
         },
         removeq(idq){
             console.log('idq--->',idq);
             if (idq > -1) {
-                this.questions.splice(idq, 1);
+                this.$store.state.gform.questions.splice(idq, 1);
             }
         },
         addnewq(){
-            this.questions.push({ is:'shortanswer' , answer:'', ques: { qtitle:'', choices: [] },  active: false, toggle: false})
+            this.$store.state.gform.questions.push({ is:'shortanswer' , answer:'', ques: { qtitle:'', choices: [] },  active: false, toggle: false})
         },
         activecolor(q){
             return q.active ? 'blueviolet;':''
         },
         activeq(idq){
             console.log('activeq--->',idq);
-            this.questions.map((q, idx)=>{
+            this.$store.state.gform.questions.map((q, idx)=>{
                  q.active=(idx==idq);
             }); 
         }
@@ -110,6 +107,5 @@ export default {
     }, 
     mounted() {}, 
     components:{
-        vueDragable
     } 
 }; 

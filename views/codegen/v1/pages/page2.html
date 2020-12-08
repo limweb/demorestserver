@@ -10,53 +10,28 @@
 </head>
 <body class="bg-white">
 <div id='app' >
-    <page size="A4" class="bg-white" v-for="j in 3" >
-        <div class="flex flex-col table w-full">
-            <div class="table-header-group w-full">
-                <div>
-                    <div>
-                        <div class="flex flex-col  border-b border-black">
-                            <div class="flex w-full mt-5 h-40 ">
-                                <div class="table-column items-center w-full h-12 pt-2 text-lg font-bold text-center text-black ">
-                                    LOGO
-                                </div>
-                            </div>
-                            <div class="flex w-full h-12">
-                                <div class="table-column items-center w-1/5 h-12 pt-2 text-lg font-bold text-center text-black  bg-green-300 border-2 border-white">COLUMN</div>
-                                <div class="table-column items-center w-1/5 h-12 pt-2 text-lg font-bold text-center text-black  bg-green-300 border-2 border-white">COLUMN</div>
-                                <div class="table-column items-center w-1/5 h-12 pt-2 text-lg font-bold text-center text-black  bg-green-300 border-2 border-white">COLUMN</div>
-                                <div class="table-column items-center w-1/5 h-12 pt-2 text-lg font-bold text-center text-black  bg-green-300 border-2 border-white">COLUMN</div>
-                                <div class="table-column items-center w-1/5 h-12 pt-2 text-lg font-bold text-center text-black  bg-green-300 border-2 border-white">COLUMN</div>
-                            </div>
-                        </div>
-                    </div>
+    <div v-for="(rep,j) in reporttype" style="page-break-before: always;" class="flex flex-col    " >
+        <page size="A4" class="page-break   relative   flex flex-col" v-for="j in 3" style="margin 0;" >
+            <div class="w-full  absolute top-0 text-center py-4" style="height:100px"> Logo {{rep}}</div>
+            <div class="w-full  h-full absolute flex flex-col " style="top:100px;">
+                <div class="flex w-full h-12">
+                            <div class="table-column items-center w-1/5 h-12 pt-2 text-lg font-bold text-center text-black  bg-green-300 border-2 border-white">COLUMN</div>
+                            <div class="table-column items-center w-1/5 h-12 pt-2 text-lg font-bold text-center text-black  bg-green-300 border-2 border-white">COLUMN</div>
+                            <div class="table-column items-center w-1/5 h-12 pt-2 text-lg font-bold text-center text-black  bg-green-300 border-2 border-white">COLUMN</div>
+                            <div class="table-column items-center w-1/5 h-12 pt-2 text-lg font-bold text-center text-black  bg-green-300 border-2 border-white">COLUMN</div>
+                            <div class="table-column items-center w-1/5 h-12 pt-2 text-lg font-bold text-center text-black  bg-green-300 border-2 border-white">COLUMN</div>
+                </div>
+                <div class="flex w-full px-5 py-5" v-for="i in 4">
+                    <div class="w-1/5 text-center">#{{i}}</div>
+                    <div class="w-1/5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, harum distinctio? Suscipit necessitatibusXXXX </div>
+                    <div class="w-1/5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, harum distinctio? Suscipit necessitatibusXXXX </div>
+                    <div class="w-1/5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, harum distinctio? Suscipit necessitatibusXXXX </div>
+                    <div class="w-1/5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, harum distinctio? Suscipit necessitatibusXXXX </div>
                 </div>
             </div>
-            <div class="table-footer-group bg-white">
-                <div>
-                    <div>
-                        <div class="flex w-full pt-2 bg-white footer h-40">
-                            <div class="footer-content h-40 items-center w-full font-bold text-center border-t bg-white border-black text-black">FOOTER 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="table-row-group bg-white" >
-                <div v-for="i in 4">
-                    <div >
-                        <div class="flex w-full px-5 ">
-                            <div class="w-1/5 text-center">#{{i}}</div>
-                            <div class="w-1/5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, harum distinctio? Suscipit necessitatibusXXXX </div>
-                            <div class="w-1/5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, harum distinctio? Suscipit necessitatibusXXXX </div>
-                            <div class="w-1/5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, harum distinctio? Suscipit necessitatibusXXXX </div>
-                            <div class="w-1/5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, harum distinctio? Suscipit necessitatibusXXXX </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </page>    
+            <div class="w-full h-40 py-5 text-center  absolute bottom-0">Footer</div>
+        </page>   
+    </div>     
 </div>	
 <script type='module'>
     import Vue from 'https://unpkg.com/vue@2.6.10/dist/vue.esm.browser.min.js';
@@ -64,6 +39,7 @@
         mixins:[],
         data(){
             return { 
+                reporttype:['ใบเสร็จรับเงิน','ใบกำกับภาษี','Invoice','aaa','bbb']
             }
         },
         el:'#app',
@@ -91,7 +67,7 @@
     page[size="A4"] {  
         width: 21cm;
         /* height: 29.7cm; notwork */
-        height: 27.7cm;
+        height: 27.9cm;
     }
     page[size="A4"][layout="landscape"] {
         width: 29.7cm;
@@ -117,12 +93,21 @@
     .footer-content {
         position: relative;
     }
+    @media all {
+	.page-break	{ display: none; }
+    }
+
 
     @media print {
+
+        .page-break	{ display: block; page-break-before: always; }
+
         body, page {
             margin: 0;
             box-shadow: 0;
+            position:relative;
         }
+
         .footer-content {
             position: fixed;
             bottom: 0;

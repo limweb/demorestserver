@@ -1,21 +1,23 @@
 export default { 
     template: `
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
         <router-link to="#" class="brand-link">
             <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                 style="opacity: .8">
             <span class="brand-text font-weight-light">CODEGEN V0.0.1</span>
         </router-link>
+      
         <div class="sidebar">
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex " >
+                <div class="image min-w-max">
                     <img src="../../dist/img/user1-128x128.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
-                <div class="info">
+                <div class="info" style="overflow: hidden;">
                     <router-link to="/profile" class="d-block">Accman Co.,Ltd</router-link>
                 </div>
             </div>
-            <nav class="mt-2" style="overflow: hidden;">
+            <nav class="mt-2 overflow-hidden">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item has-treeview">
@@ -195,10 +197,9 @@ export default {
                 </ul>
             </nav>
         </div>
-        <div class="bg-success" style="position: fixed;bottom: 0px;width: inherit;text-align:center;height: 57px; padding-top: 1rem;">
+        <div class="bg-success overflow-hidden" style="position: fixed;bottom: 0px; width: inherit; text-align:center;height: 57px; padding-top: 1rem;">
           <a href="#" style="background-color: rgb(0, 166, 90);">
-            <i class="fa fa-star-o" style="color: rgb(255, 255, 255);"></i>
-            <span style="color:rgb(255, 255, 255);">AccMan Templates v0.0.1</span>
+            <span style="color:rgb(255, 255, 255); mix-width:96px;">AccMan Templates v0.0.1</span>
           </a>
         </div>
     </aside>

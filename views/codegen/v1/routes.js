@@ -9,6 +9,7 @@ import CrudpageEdit   from "./pages/crud/edit.js";
 
 const Login = () => import("./pages/login.js");
 const Googlefrm = () => import("./pages/googlefrm.js");
+const Googleview = () => import("./pages/googleview.js");
 const Dashv1 = () => import("./pages/dashboard1.js");
 const Dashv2 = () => import("./pages/dashboard2.js");
 const Dashv3 = () => import("./pages/dashboard3.js");
@@ -35,8 +36,10 @@ const Authgoogle = () => import("./pages/authgoogle.js");
 const LockScreen = () => import("./pages/lockscreen.js");
 const Recoverpass  = () => import("./pages/recoverpass.js");
 const Testinput = ()=>import("./pages/testinput.js");
+
 export default [
   { path: "/googlefrm", name: "googlefrm", component: Googlefrm, meta: { requiresAuth: false, layout: "testlayout" } },
+  { path: "/googleview", name: "googleview", component: Googleview, meta: { requiresAuth: false, layout: "testlayout" } },
   { path: "/test", name: "Testinput", component: Testinput, meta: { requiresAuth: false, layout: "testlayout" } },
   { path: "/index", name: "Index", component: Main, meta: { requiresAuth: false, layout: "mainlayout" } },
   { path: "/home", name: "Home", component: Main, meta: { requiresAuth: false, layout: "mainlayout" } },

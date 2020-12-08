@@ -9,16 +9,16 @@
     <link href='https://unpkg.com/tailwindcss@2.0.1/dist/tailwind.min.css' rel='stylesheet'>
 </head>
 <body class="bg-white">
-<div id='app' >
-    <page size="A4" class="bg-white h-screen">
-        <table class="ml-5 flex flex-col table w-full h-screen">
-            <thead class="table-header-group w-full">
+<div id='app' class="flex flex-col" style="height: 100%;" >
+    <page size="A4" class=" "  style="height: fit-content;" v-for="(rep,idj) in reporttype" >
+        <table class="ml-5 flex flex-col table w-full ">
+            <thead class="table-header-group w-full ">
                 <tr>
                     <th>
-                        <div class="flex flex-col  border-b border-black">
+                        <div class="flex flex-col  border-b border-black  ">
                             <div class="flex w-full mt-5 h-40 ">
-                                <div class="table-column items-center w-full h-12 pt-2 text-lg font-bold text-center text-black ">
-                                    LOGO
+                                <div class="table-column items-center w-full h-12 pt-2 text-lg font-bold text-center text-black">
+                                   {{rep}}---{{idj}}/{{reporttype.length}}
                                 </div>
                             </div>
                             <div class="flex w-full h-12">
@@ -43,10 +43,10 @@
                 </tr>
             </tfoot>
             <tbody class="table-row-group bg-white" >
-                <tr v-for="i in 13">
+                <tr v-for="i in 14" >
                     <td >
                         <div class="flex w-full px-5 ">
-                            <div class="w-1/5 text-center">#{{i}}</div>
+                            <div class="w-1/5 text-center">#{{i}}/{{idj}}</div>
                             <div class="w-1/5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, harum distinctio? Suscipit necessitatibusXXXX </div>
                             <div class="w-1/5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, harum distinctio? Suscipit necessitatibusXXXX </div>
                             <div class="w-1/5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, harum distinctio? Suscipit necessitatibusXXXX </div>
@@ -56,7 +56,8 @@
                 </tr>
             </tbody>
         </table>
-    </page>    
+        <div  v-if="(idj+1) != reporttype.length" style="page-break-before: always; height:0px;"  class="bg-red-400" ></div>
+    </page>
 </div>	
 <script type='module'>
     import Vue from 'https://unpkg.com/vue@2.6.10/dist/vue.esm.browser.min.js';
@@ -64,6 +65,7 @@
         mixins:[],
         data(){
             return { 
+              reporttype:['ใบเสร็จรับเงิน','ใบกำกับภาษี','Invoice','aaa','bbb']
             }
         },
         el:'#app',
@@ -84,7 +86,9 @@
     }
     page {
         display: block;
-        margin: 0 auto;
+         margin: 0;
+        /* margin: 0 auto; */
+        /* position: relative; */
         /* margin-bottom: 0.5cm; */
         /* box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); */
     }
@@ -130,6 +134,11 @@
         table  {
             margin-bottom: 0;
             box-shadow: none;
+        }
+        .pb {
+            /* page-break-inside: avoid;  */
+            /* page-break-before: always; */
+            page-break-after: always;
         }
     } 
     

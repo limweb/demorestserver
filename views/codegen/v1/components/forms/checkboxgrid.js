@@ -16,7 +16,7 @@ export default {
                   <span @click="rmchoice(row)"> &nbsp;&nbsp;X&nbsp;&nbsp; </span>
               </div>
               <div class="w-full h-12 mt-2">
-                  <span @click="addchoice" class="cursor-pointer">Add choice...</span>
+                  <span @click="addchoice" class="cursor-pointer">Add row...</span>
               </div>
             </div>
 

@@ -52,8 +52,8 @@ export default {
             // timeline
             // ribbon
             
-            // { "is": "checkboxgtf", "value": [true,true,false], "values": [{ "value": true, "label": "AAAAAA" }, { "value": true, "label": "BBBBBB" }, { "value": false, "label": "CCCCCC" }], "class": "", "style": "", "id": "checkbox_group", "name": "checkbox_group" },
-            // { "is": "checkbox_group", "value": [], "values": [{ "value": "A", "label": "AAAAAA" }, { "value": "B", "label": "BBBBBB" }, { "value": "C", "label": "CCCCCC" }], "class": "", "style": "", "id": "checkbox_group1", "name": "checkbox_group1" },
+            { "is": "checkboxgtf", "value": [true,true,false], "values": [{ "value": true, "label": "AAAAAA" }, { "value": true, "label": "BBBBBB" }, { "value": false, "label": "CCCCCC" }], "class": "", "style": "", "id": "checkbox_group", "name": "checkbox_group" },
+            { "is": "checkbox_group", "value": [], "values": [{ "value": "A", "label": "AAAAAA" }, { "value": "B", "label": "BBBBBB" }, { "value": "C", "label": "CCCCCC" }], "class": "", "style": "", "id": "checkbox_group1", "name": "checkbox_group1" },
             // { "is": "checkbox_group_relation", "valkey": "value", "lblkey": "label", "value": [], "class": "flex-col", "style": "", "id": "checkbox_group_relation", "values": [{ "value": "A", "label": "AAAAAA" }, { "value": "B", "label": "BBBBBB" }, { "value": "C", "label": "CCCCCC" }] },
             // { "is": "editable", "value": "ssss", "class": "", "style": "", "contenteditable": true, "id": "editable" },
             // { "is": "gender", "value": "", "values": ["A", "B", "C"], "class": "flex-col", "style": "", "id": "radio_group", "name": "radio_group2" },

@@ -1,4 +1,5 @@
 import crud from "./crud/index.js";
+import gform from "./gform/index.js"
 
 const app = {
     namespaced: true,
@@ -25,7 +26,8 @@ const app = {
 
 const store = {
         app,
-        crud
+        crud,
+        gform
 };
 
 export default store;

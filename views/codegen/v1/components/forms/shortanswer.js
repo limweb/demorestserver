@@ -1,7 +1,7 @@
 export default { 
     inheritAttrs: false, 
     template: ` 
-    <div class="w-full h-40 flex flex-col">
+    <div class="w-full h-40 flex flex-col fontzoom">
           <div class="w-full border border-black">
             <input type="text" class="w-full p-2 h-12"  v-model="qtitle" placeholder="short answer" @input="updateValue">
           </div>
