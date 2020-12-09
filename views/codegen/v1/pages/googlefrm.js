@@ -9,7 +9,6 @@ export default {
             <div class="w-full flex">Description: &nbsp;&nbsp; <input class="w-full h-12 p-2" type="text" v-model="$store.state.gform.description" ></div>
             <div @click="addnewq" v-if="$store.state.gform.questions.length===0"class="cursor-pointer w-12 h-12 self-center textcenter absolute -bottom-6 border border-gray-400 bg-blue-400 rounded-full shadow  flex items-center justify-center">+</div>
         </div>
-
         <div class="bg-gray-100 shadow border-2 w-1/2 mt-2 px-2 flex flex-col border-l-4 " @click="activeq(idq)"
              v-for="(question,idq) in $store.state.gform.questions" :key="idq" 
              :style="'border-left-color:'+ activecolor(question) "
@@ -63,7 +62,7 @@ export default {
     methods: {
         changetype(question){
             if(['multiplechoice','checkboxes','dropdowntype'].includes(question.is)){
-               console.log('nothing--->'); 
+                console.log('nothing--->'); 
             } else if(question.is == 'linescale'){
                 question.ques.choices = { numstart:1, numend:10 , starttxt:'',endtxt:'' };
             } else if(['checkboxgrid','multipolechoicegrid'].includes(question.is)){

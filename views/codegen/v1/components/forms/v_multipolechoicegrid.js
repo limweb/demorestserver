@@ -12,12 +12,14 @@ export default {
                   <td v-for="(c,idc) in value.ques.choices.cols">{{c.label}}</td>
                 </tr>
                 <tr v-for="(r,idr) in value.ques.choices.rows" >
-                  <td>{{r.label}}</td>
-                  <td v-for="(c,idc) in value.ques.choices.cols"><input type="radio"></td>
+                    <td>{{r.label}}</td>
+                    <td v-for="(c,idc) in value.ques.choices.cols">
+                        <input v-model="myanswer[idr]" :value="idr+','+idc" :name="'id'+idr" type="radio" @change="updateValue">
+                    </td>
                 </tr>
            </table>
           </div>
-          {{value.answer}}
+          {{myanswer}}
     </div>
     `,
     mixins: [], 
@@ -28,12 +30,20 @@ export default {
           name: 'MultiplechoiceGrid', 
           uuid: '', 
           qtitle:'',
+          myanswer: []
       }; 
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
       this.uuid ='idx'+Math.random().toString(36).slice(-6);  
       this.qtitle = this.value.qtitle;
+      if(this.value.answer==''){
+        for(let i=0;i< this.value.ques.choices.rows.length;i++){
+          this.myanswer.push('');
+        }
+      } else {
+        this.myanswer = this.value.answer;
+      }
     }, 
     methods: { 
        rmchoice(choice){
@@ -46,8 +56,10 @@ export default {
          this.value.choices.cols.push({ label:'' })
        },
        updateValue(){ 
+         console.log('update--->',);
          this.value.qtitle = this.qtitle;
-         this.$emit('input',this.value) 
+         this.value.answer = this.myanswer;
+         this.$emit('input',this.myanswer) 
        }         
     }, 
     computed: {}, 

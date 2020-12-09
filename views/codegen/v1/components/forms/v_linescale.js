@@ -7,10 +7,10 @@ export default {
           </div>
           <div class="w-full h-12 flex items-end">
             <div class="mr-2">{{value.ques.choices.starttxt}}</div>
-            <component is="radio_group" :values="getvalues()" valkey="value"  v-model="value.ques.answer" />
+              <component is="radio_group" :values="getvalues()" valkey="value"  v-model="value.answer" />
             <div class="ml-2">{{value.ques.choices.endtxt}}</div>
           </div>
-          {{value.ques.answer}}
+          {{value.answer}}
     </div>
     `,
     mixins: [], 

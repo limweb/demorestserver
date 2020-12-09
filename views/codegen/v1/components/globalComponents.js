@@ -96,6 +96,20 @@
         import Printa4table from "./Printa4table.js";
 
         export default  {
+            'shortanswer': Shortanswer,
+            'paragraph': Paragraph,
+            'multiplechoice': Multiplechoice,
+            'checkboxes': Checkboxes,
+            'dropdowntype': Dropdowntype,
+            'fileupload': Fileupload,
+            'linescale': Linescale,
+            'multipolechoicegrid': Multipolechoicegrid,
+            'checkboxgrid': Checkboxgrid,
+            'datetype': Datetype,
+            'timetype': Timetype,
+            'monthtype': Monthtype,
+            'yeartype': Yeartype,
+
             'v_shortanswer': vShortanswer,
             'v_paragraph': vParagraph,
             'v_multiplechoice': vMultiplechoice,

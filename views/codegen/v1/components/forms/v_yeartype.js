@@ -6,7 +6,7 @@ export default {
             <Label :label="value.ques.qtitle" />
           </div>
           <div class="w-full h-12 flex items-end">
-            <component is="input_year" v-model="value.answer"></component>
+            <component is="v2yearpicker" v-model="value.answer"></component>
           </div>
           {{value.answer}}
     </div>

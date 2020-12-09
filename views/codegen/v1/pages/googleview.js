@@ -9,7 +9,7 @@ export default {
     <div class="my-2 px-2 py-2 w-3/5 bg-gray-100 shadow rounded border border-black"
          v-for="(q,idx) in $store.state.gform.questions"
     >
-         <component :is="q.vis" v-model="q" />
+         <component :is="'v_'+q.is" v-model="q" />
     </div>
         
     </div>

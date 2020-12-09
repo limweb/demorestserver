@@ -13,7 +13,6 @@ export default {
         class="hidden"
         type="file"
         class="hidden "  
-        :value="value" 
         @input="updateValue($event)"  
         v-bind="$attrs" 
         name="filefield" 
@@ -50,8 +49,8 @@ export default {
           for(let i=0;i<flength;i++) {
             this.fnames.push(fups[i].name);
           }
-          // this.$emit('input',fups[0]) 
           this.f = fups[0];
+          this.$emit('input',fups[0]) 
        }         
     }, 
     computed: {}, 

@@ -12,8 +12,10 @@ export default {
                   <td v-for="(c,idc) in value.ques.choices.cols">{{c.label}}</td>
                 </tr>
                 <tr v-for="(r,idr) in value.ques.choices.rows" >
-                  <td>{{r.label}}</td>
-                  <td v-for="(c,idc) in value.ques.choices.cols"><input type="checkbox"></td>
+                    <td>{{r.label}}</td>
+                    <td v-for="(c,idc) in value.ques.choices.cols">
+                        <input v-model="myanswer[idr][idc]" :value="idr+','+idc" type="checkbox" @change="updateValue">
+                    </td>
                 </tr>
            </table>
           </div>
@@ -25,15 +27,26 @@ export default {
     data() { 
       return { 
           theme: 'AdminLte', 
-          name: 'Checkbox Grid', 
+          name: 'MultiplechoiceGrid', 
           uuid: '', 
           qtitle:'',
+          myanswer: []
       }; 
     }, 
     created() { 
       console.log( this.name + 'component is created'); 
       this.uuid ='idx'+Math.random().toString(36).slice(-6);  
       this.qtitle = this.value.qtitle;
+      if(this.value.answer==''){
+        for(let i=0;i< this.value.ques.choices.rows.length;i++){
+            this.myanswer.push([]);
+            for(let j=0;j< this.value.ques.choices.cols.length;j++){
+              this.myanswer[i].push(false);
+            }
+        }
+      } else {
+        this.myanswer = this.value.answer;
+      }
     }, 
     methods: { 
        rmchoice(choice){
@@ -46,8 +59,11 @@ export default {
          this.value.choices.cols.push({ label:'' })
        },
        updateValue(){ 
+         console.log('update--->',this.myanswer);
          this.value.qtitle = this.qtitle;
-         this.$emit('input',this.value) 
+        //  this.value.answer = JSON.parse(JSON.stringify(this.myanswer));
+         this.value.answer = this.myanswer;
+        this.$emit('input',this.value) 
        }         
     }, 
     computed: {}, 
