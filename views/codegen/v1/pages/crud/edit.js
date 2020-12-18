@@ -70,7 +70,7 @@ export default {
             { edit: true,  comp: { is:'v2datepicker'   ,required: true  ,inputClass:'w-full px-2' },  label: 'Birthdate',                   key:'birthdate' },
             { edit: true,  comp: { is:'input_email'  ,required: true  ,inputClass:'w-full px-2' },  label: 'Email',                       key:'email' },
             { edit: true,  comp: { is:'input_text'   ,required: true  ,inputClass:'w-full px-2' },  label: 'Gender',                      key:'gender' },
-            { edit: true,  comp: { is:'input_number' ,required: true  ,inputClass:'w-full px-2', max:10, min:0 },  label: 'Salary',       key:'salary' },
+            { edit: true,  comp: { is:'input_number' ,required: true  ,inputClass:'w-full px-2', min:0 },  label: 'Salary',       key:'salary' },
             { edit: true,  comp: { is:'Textarea'     ,required: true  ,inputClass:'w-full px-2', row:4 },  label: 'Address',                     key:'address' },
             { edit: false, comp: { is:'input_text'   ,required: true  ,inputClass:'w-full px-2' },  label: 'Group',                       key:'group' },
             { edit: true,  comp: { is:'input_text'   ,required: true  ,inputClass:'w-full px-2' },  label: 'Group_id',                    key:'group_id' },

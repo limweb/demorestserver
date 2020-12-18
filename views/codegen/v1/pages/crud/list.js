@@ -1,4 +1,4 @@
-import  xlsx from "../../mixins/xlsx.js";
+import xlsx from "../../mixins/xlsx.js";
 export default {
     template: `
         <section class="w-full p-2">
@@ -21,7 +21,7 @@ export default {
                             </div>
                         </div>
                         <div class="flex col-2">
-                            <input type="text" class="form-control" placeholder="Search...">
+                            <input type="text" v-model="kw" class="form-control" placeholder="Search...">
                         </div>
                         <!-- <div class="col-3">
                             <i class="fa fa-spinner fa-spin fa-x fa-fw"></i>
@@ -239,6 +239,8 @@ export default {
     mixins: [xlsx],
     data() {
         return {
+            baseurl: '/codegen/v1/users/vuetable',
+            kw: '',
             mydate: null,
             mydaterang: null,
             mydatetime: null,
@@ -255,33 +257,228 @@ export default {
             per_page: 10,
             prev_page_url: '',
             to: 10,
-            goto_page:1,
+            goto_page: 1,
             total: 200,
-            columns: [
-            { filtertxt:'', show: true,  search: false, className:'w-8', inline:{ enable:false,  type:'text'    },searchfield:   'id',         sort: false, sortfield: 'id',         sortOrder: 0,  sortDirection: 'x', key:'id' },
-            { filtertxt:'', show: true,  search: true,  className:'w-44', inline:{ enable:true,   type:'text'    },searchfield:   'name',       sort: true,  sortfield: 'name',       sortOrder: 0,  sortDirection: 'x', key:'name' },
-            { filtertxt:'', show: true,  search: true,  className:'w-40', inline:{ enable:true,   type:'text'    },searchfield:   'nickname',   sort: true,  sortfield: 'nickname',   sortOrder: 0,  sortDirection: 'x', key:'nickname' },
-            { filtertxt:'', show: true,  search: true,  className:'w-8', inline:{ enable:true,   type:'number'  },searchfield:   'birthdate',  sort: true,  sortfield: 'birthdate',  sortOrder: 0,  sortDirection: 'x', key:'age' },
-            { filtertxt:'', show: false, search: false, className:'w-40', inline:{ enable:true,   type:'date'    },searchfield:   'birthdate',  sort: false, sortfield: 'birthdate',  sortOrder: 0,  sortDirection: 'x', key:'birthdate' },
-            { filtertxt:'', show: false, search: false, className:'w-40', inline:{ enable:false,  type:'text'    },searchfield:   'email',      sort: false, sortfield: 'email',      sortOrder: 0,  sortDirection: 'x', key:'email' },
-            { filtertxt:'', show: false, search: false, className:'w-20', inline:{ enable:false,  type:'text'    },searchfield:   'gender',     sort: false, sortfield: 'gender',     sortOrder: 0,  sortDirection: 'x', key:'gender' },
-            { filtertxt:'', show: true,  search: true,  className:'w-40', inline:{ enable:true,   type: 'number' },searchfield:   'salary',     sort: true,  sortfield: 'salary',     sortOrder: 0,  sortDirection: 'x', key:'salary' },
-            { filtertxt:'', show: false, search: false, className:'', inline:{ enable:false,  type:'text'    },searchfield:   'address',    sort: false, sortfield: 'address',    sortOrder: 0,  sortDirection: 'x', key:'address' },
-            { filtertxt:'', show: false, search: false, className:'', inline:{ enable:false,  type:'text'    },searchfield:   'group',      sort: false, sortfield: 'group',      sortOrder: 0,  sortDirection: 'x', key:'group' },
-            { filtertxt:'', show: false, search: false, className:'', inline:{ enable:false,  type:'text'    },searchfield:   'group_id',   sort: false, sortfield: 'group_id',   sortOrder: 0,  sortDirection: 'x', key:'group_id' },
-            { filtertxt:'', show: false, search: false, className:'', inline:{ enable:false,  type:'text'    },searchfield:   'created_at', sort: false, sortfield: 'created_at', sortOrder: 0,  sortDirection: 'x', key:'created_at' },
-            { filtertxt:'', show: false, search: false, className:'', inline:{ enable:false,  type:'text'    },searchfield:   'updated_at', sort: false, sortfield: 'updated_at', sortOrder: 0,  sortDirection: 'x', key:'updated_at' }],
-            selectAll:false,
-            sortOrder:[],
-            loading:false,
-            timer:'',
-            sorturl:''
+            columns: [{
+                    filtertxt: '',
+                    show: true,
+                    search: false,
+                    className: 'w-8',
+                    inline: {
+                        enable: false,
+                        type: 'text'
+                    },
+                    searchfield: 'id',
+                    sort: false,
+                    sortfield: 'id',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'id'
+                },
+                {
+                    filtertxt: '',
+                    show: true,
+                    search: true,
+                    className: 'w-44',
+                    inline: {
+                        enable: true,
+                        type: 'text'
+                    },
+                    searchfield: 'name',
+                    sort: true,
+                    sortfield: 'name',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'name'
+                },
+                {
+                    filtertxt: '',
+                    show: true,
+                    search: true,
+                    className: 'w-40',
+                    inline: {
+                        enable: true,
+                        type: 'text'
+                    },
+                    searchfield: 'nickname',
+                    sort: true,
+                    sortfield: 'nickname',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'nickname'
+                },
+                {
+                    filtertxt: '',
+                    show: true,
+                    search: true,
+                    className: 'w-8',
+                    inline: {
+                        enable: true,
+                        type: 'number'
+                    },
+                    searchfield: 'birthdate',
+                    sort: true,
+                    sortfield: 'birthdate',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'age'
+                },
+                {
+                    filtertxt: '',
+                    show: false,
+                    search: false,
+                    className: 'w-40',
+                    inline: {
+                        enable: true,
+                        type: 'date'
+                    },
+                    searchfield: 'birthdate',
+                    sort: false,
+                    sortfield: 'birthdate',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'birthdate'
+                },
+                {
+                    filtertxt: '',
+                    show: false,
+                    search: false,
+                    className: 'w-40',
+                    inline: {
+                        enable: false,
+                        type: 'text'
+                    },
+                    searchfield: 'email',
+                    sort: false,
+                    sortfield: 'email',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'email'
+                },
+                {
+                    filtertxt: '',
+                    show: false,
+                    search: false,
+                    className: 'w-20',
+                    inline: {
+                        enable: false,
+                        type: 'text'
+                    },
+                    searchfield: 'gender',
+                    sort: false,
+                    sortfield: 'gender',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'gender'
+                },
+                {
+                    filtertxt: '',
+                    show: true,
+                    search: true,
+                    className: 'w-40',
+                    inline: {
+                        enable: true,
+                        type: 'number'
+                    },
+                    searchfield: 'salary',
+                    sort: true,
+                    sortfield: 'salary',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'salary'
+                },
+                {
+                    filtertxt: '',
+                    show: false,
+                    search: false,
+                    className: '',
+                    inline: {
+                        enable: false,
+                        type: 'text'
+                    },
+                    searchfield: 'address',
+                    sort: false,
+                    sortfield: 'address',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'address'
+                },
+                {
+                    filtertxt: '',
+                    show: false,
+                    search: false,
+                    className: '',
+                    inline: {
+                        enable: false,
+                        type: 'text'
+                    },
+                    searchfield: 'group',
+                    sort: false,
+                    sortfield: 'group',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'group'
+                },
+                {
+                    filtertxt: '',
+                    show: false,
+                    search: false,
+                    className: '',
+                    inline: {
+                        enable: false,
+                        type: 'text'
+                    },
+                    searchfield: 'group_id',
+                    sort: false,
+                    sortfield: 'group_id',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'group_id'
+                },
+                {
+                    filtertxt: '',
+                    show: false,
+                    search: false,
+                    className: '',
+                    inline: {
+                        enable: false,
+                        type: 'text'
+                    },
+                    searchfield: 'created_at',
+                    sort: false,
+                    sortfield: 'created_at',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'created_at'
+                },
+                {
+                    filtertxt: '',
+                    show: false,
+                    search: false,
+                    className: '',
+                    inline: {
+                        enable: false,
+                        type: 'text'
+                    },
+                    searchfield: 'updated_at',
+                    sort: false,
+                    sortfield: 'updated_at',
+                    sortOrder: 0,
+                    sortDirection: 'x',
+                    key: 'updated_at'
+                }
+            ],
+            selectAll: false,
+            sortOrder: [],
+            loading: false,
+            timer: '',
+            sorturl: ''
         };
     },
     created() {
         console.log(this.name + 'component is created');
         window.vc = this;
-        let url = 'https://vuetable.ratiw.net/api/users?per_page='+this.per_page;
+        let url = this.baseurl + '?per_page=' + this.per_page;
         this.getdata(url);
     },
     methods: {
@@ -300,71 +497,62 @@ export default {
             });
             return fields;
         },
-        exportdatas(){
+        exportdatas() {
             let datas = this.datas.filter(i => i.check);
             console.log("datalength=", datas.length);
             return datas;
         },
-        async exportdata(){
-            let url = 'https://vuetable.ratiw.net/api/users?page=1&per_page=200';
+        async exportdata() {
+            let url = this.baseurl + '?page=1&per_page=200';
             let rs = await axios.get(url);
-            console.log('rs--->',rs.data.data);
-            this.exportXLS(rs.data.data,this.exportxlsx(),this.json_fields());
+            console.log('rs--->', rs.data.data);
+            this.exportXLS(rs.data.data, this.exportxlsx(), this.json_fields());
         },
-        viewItem(item){
-           this.$store.state.crud.row_view = item; 
-           this.$router.push('/crud/view/'+item.id);
+        viewItem(item) {
+            this.$store.state.crud.row_view = item;
+            this.$router.push('/crud/view/' + item.id);
         },
-        saveInline(item){
-          console.log('saveinline--->');
-          item.inline=!item.inline 
-          this.bckedititem = null;
-          
+        saveInline(item) {
+            console.log('saveinline--->');
+            item.inline = !item.inline
+            this.bckedititem = null;
+
         },
-        calcelInline(item){
-            console.log('test--->',item==this.bckedititem);
-            item.inline=!item.inline 
-            Object.keys(this.bckedititem).map(key=>{
+        calcelInline(item) {
+            console.log('test--->', item == this.bckedititem);
+            item.inline = !item.inline
+            Object.keys(this.bckedititem).map(key => {
                 item[key] = this.bckedititem[key];
             })
         },
-        inlineEdit(item){ 
-            if (this.datas.filter(row=>row.inline && row.id != item.id ).length > 0 ){
+        inlineEdit(item) {
+            if (this.datas.filter(row => row.inline && row.id != item.id).length > 0) {
                 this.$msgbox.alert('Please save before edit new line')
             } else {
                 this.bckedititem = JSON.parse(JSON.stringify(item));
-                item.inline=!item.inline 
+                item.inline = !item.inline
             }
         },
-        chkinline(){
-            if (this.datas.filter(row=>row.inline).length > 0 ){
+        chkinline() {
+            if (this.datas.filter(row => row.inline).length > 0) {
                 this.$msgbox.alert('Please save before edit new line')
-                return false;    
+                return false;
             } else {
-                return true;    
+                return true;
             }
         },
-        editrow(item){
-           this.$store.state.crud.row_update = JSON.parse(JSON.stringify(item));
-           this.$router.push('/crud/edit/'+item.id)
+        editrow(item) {
+            this.$store.state.crud.row_update = JSON.parse(JSON.stringify(item));
+            this.$router.push('/crud/edit/' + item.id)
         },
-        delrow(idx,item){
-        //    this.$msgbox.confirm(`Are you sure want to delete id = ${idx} ? `,'!DELETE').then(rs=>{
-        //        if(rs==='confirm'){
-        //            this.$message.info('Confirm')
-                      this.$store.state.crud.row_delete = item;
-                      this.$router.push('/crud/delete/'+item.id)
-        //        }
-        //    }).catch(err=>{
-        //         if(err ==='cancel') {
-        //            this.$message.info('Cancel')
-        //        } 
-        //    })
+        delrow(idx, item) {
+            this.$store.state.crud.row_delete = item;
+            this.$router.push('/crud/delete/' + item.id)
         },
-        addrow(){
+        addrow() {
             this.$router.push("/crud/add")
         },
-        searchfilter(){
+        searchfilter() {
             if (this.timer) {
                 clearTimeout(this.timer);
                 this.timer = null;
@@ -373,87 +561,84 @@ export default {
                 console.log('searchfilter');
             }, 800);
         },
-        clearsearchtxt(){
-            this.columns.map(c=>c.filtertxt='')
+        clearsearchtxt() {
+            this.columns.map(c => c.filtertxt = '')
         },
-        sorted(col,evt){
+        sorted(col, evt) {
             console.log(evt)
-            if(col.sort){
+            if (col.sort) {
                 let sorturl = '';
-                if(evt.ctrlKey || evt.altKey || evt.metaKey){
-                let s = this.sortOrder.find(sort=>sort.key==col.key);
-                if(s){
-                    s.sortDirection = s.sortDirection=='asc'?'desc':'asc';
-                } else {
-                    col.sortDirection = col.sortDirection=='asc'?'desc':'asc';
-                    this.sortOrder.push(col) 
-                    col.sortOrder = this.sortOrder.length;
-                }
-                    sorturl = this.sortOrder.map(s=>{
-                            return s.sortfield+'|'+s.sortDirection; 
+                if (evt.ctrlKey || evt.altKey || evt.metaKey) {
+                    let s = this.sortOrder.find(sort => sort.key == col.key);
+                    if (s) {
+                        s.sortDirection = s.sortDirection == 'asc' ? 'desc' : 'asc';
+                    } else {
+                        col.sortDirection = col.sortDirection == 'asc' ? 'desc' : 'asc';
+                        this.sortOrder.push(col)
+                        col.sortOrder = this.sortOrder.length;
+                    }
+                    sorturl = this.sortOrder.map(s => {
+                        return s.sortfield + '|' + s.sortDirection;
                     }).join(',');
                 } else {
-                this.sortOrder = [];
-                let direction = col.sortDirection=='asc'?'desc':'asc';
-                this.columns.map(col=>{ col.sortOrder= 0; col.sortDirection='x'; });
-                col.sortDirection = direction;
-                sorturl = col.sortfield+'|'+col.sortDirection; 
+                    this.sortOrder = [];
+                    let direction = col.sortDirection == 'asc' ? 'desc' : 'asc';
+                    this.columns.map(col => {
+                        col.sortOrder = 0;
+                        col.sortDirection = 'x';
+                    });
+                    col.sortDirection = direction;
+                    sorturl = col.sortfield + '|' + col.sortDirection;
                 }
                 this.sorturl = sorturl;
-                let url = 'https://vuetable.ratiw.net/api/users?page='+ this.goto_page + '&per_page='+this.per_page +'&sort=' + sorturl;
+                let url = this.baseurl + '?page=' + this.goto_page + '&per_page=' + this.per_page + '&sort=' + sorturl;
                 console.log(url);
                 this.getdata(url);
             }
         },
-        genderLabel (value) {
-            return value === 'M'
-                ? '<span class="tag is-primary is-medium"><span class="icon"><i class="fa fa-mars"></i></span>&nbsp;Male</span>'
-                : '<span class="tag is-danger is-medium"><span class="icon"><i class="fa fa-venus"></i></span>&nbsp;Female</span>'
+        checkedall() {
+            this.selectAll = !this.selectAll;
+            console.log('---select--->', this.selectAll);
+            this.datas.map(item => item.check = this.selectAll)
         },
-        checkedall(){
-            this.selectAll=!this.selectAll;
-            console.log('---select--->',this.selectAll);
-            this.datas.map(item=>item.check=this.selectAll)
-        },
-        gotopage(page){
+        gotopage(page) {
             this.goto_page = page;
             this.gotoPage();
         },
-        gotoPage(){
-            //&filter="aaaa"
-            let url = 'https://vuetable.ratiw.net/api/users?page='+ this.goto_page + '&per_page='+this.per_page +'?sort='+ this.sorturl;
+        gotoPage() {
+            let url = this.baseurl + '?page=' + this.goto_page + '&per_page=' + this.per_page + '&sort=' + this.sorturl + '&kw=' + this.kw;
             this.getdata(url);
         },
-        gotolastpage(){
-           this.goto_page = this.last_page;
-           this.gotoPage();
+        gotolastpage() {
+            this.goto_page = this.last_page;
+            this.gotoPage();
         },
-        gotopfirstpage(){
-           this.goto_page = 1;
-           this.gotoPage();
+        gotopfirstpage() {
+            this.goto_page = 1;
+            this.gotoPage();
         },
-        changeperpage(){
-           this.goto_page = 1;
-           this.gotoPage();
+        changeperpage() {
+            this.goto_page = 1;
+            this.gotoPage();
         },
-        gotonexpage(){
-          let url = this.next_page_url = this.next_page_url;
-          this.getdata(url);
+        gotonexpage() {
+            let url = this.next_page_url = this.next_page_url;
+            this.getdata(url);
         },
-        gotoprevpage(){
-          let url = this.prev_page_url = this.prev_page_url;
-          this.getdata(url);
+        gotoprevpage() {
+            let url = this.prev_page_url = this.prev_page_url;
+            this.getdata(url);
         },
-        getdata(url){
-            if(this.chkinline()){
+        getdata(url) {
+            if (this.chkinline()) {
                 this.loading = true;
-                axios.get(url).then(rs=>{
+                axios.get(url).then(rs => {
                     console.log(rs);
-                    
-                    this.datas = rs.data.data.map(item=>{
-                            item.check = false;
-                            item.inline  = false;
-                            return item;
+
+                    this.datas = rs.data.data.map(item => {
+                        item.check = false;
+                        item.inline = false;
+                        return item;
                     })
                     this.current_page = rs.data.current_page;
                     this.goto_page = this.current_page;
@@ -465,47 +650,45 @@ export default {
                     this.to = rs.data.to;
                     this.total = rs.data.total;
                     this.loading = false;
-                }).catch(err=>{
+                }).catch(err => {
                     console.error(err)
                     this.loading = false;
-                });            
+                });
             }
         }
     },
     computed: {
-        uppage(){
-            if(this.last_page > 20) {
-                if(this.current_page < 5) {
-                    return [1,2,3,4,5];
+        uppage() {
+            if (this.last_page > 20) {
+                if (this.current_page < 5) {
+                    return [1, 2, 3, 4, 5];
                 } else {
-                     return [...[1,2],this.current_page-2,this.current_page-1,this.current_page,this.current_page+1,this.current_page+2];
+                    return [...[1, 2], this.current_page - 2, this.current_page - 1, this.current_page, this.current_page + 1, this.current_page + 2];
                 }
             } else {
-               let pages = []
-               for(let i=1;i<=this.last_page/2;i++){
-                   pages.push(i);
-               }       
-               return pages;
+                let pages = []
+                for (let i = 1; i <= this.last_page / 2; i++) {
+                    pages.push(i);
+                }
+                return pages;
             }
         },
-        downpage(){
-            if(this.last_page > 20) {
-                if(this.current_page <= this.last_page - 4) { 
-                    return [this.current_page-2,this.current_page-1,this.current_page,this.current_page+1,this.current_page+2,this.last_page-1,this.last_page];
+        downpage() {
+            if (this.last_page > 20) {
+                if (this.current_page <= this.last_page - 4) {
+                    return [this.current_page - 2, this.current_page - 1, this.current_page, this.current_page + 1, this.current_page + 2, this.last_page - 1, this.last_page];
                 } else {
-                    return [this.last_page-4,this.last_page-3,this.last_page-2,this.last_page-1,this.last_page];
+                    return [this.last_page - 4, this.last_page - 3, this.last_page - 2, this.last_page - 1, this.last_page];
                 }
             } else {
-               let pages = [];
-               for(let i= Math.ceil(this.last_page/2); i<=this.last_page; i++){
-                  pages.push(i);
-               }
-               return pages;
+                let pages = [];
+                for (let i = Math.ceil(this.last_page / 2); i <= this.last_page; i++) {
+                    pages.push(i);
+                }
+                return pages;
             }
         }
-
     },
-    mounted() {
-    },
+    mounted() {},
     components: {}
 };
