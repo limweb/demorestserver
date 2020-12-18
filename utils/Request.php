@@ -53,9 +53,12 @@ class Request extends Config
             $rs = JwtService::verify($this->token);
             if($rs){
                 $this->user = JwtService::getMember();
+            } else {
+                $this->user = null; 
             }
         }
     }
+
 
     public function __toArray()
     {

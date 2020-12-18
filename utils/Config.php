@@ -14,6 +14,14 @@ class Config
         }
     }
 
+    public function count() {
+        return count((array)$this->values);
+    }
+
+    public function has($prop){
+        return ((isset($this->values->$prop) &&  $this->values->$prop) ? true : false);
+    }
+
     public function __get($prop)
     {
         return (isset($this->values->$prop) ? $this->values->$prop : null  );
