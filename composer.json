@@ -2,10 +2,10 @@
     "require": {
         "jacwright/restserver": "^1.2",
         "symfony/var-dumper": "v3.4.39",
-        "illuminate/database": "v5.3.23",
+        "illuminate/database": "v6.20.26",
         "illuminate/events": "v5.3.23"
     },
     "require-dev": {
-        "composer/composer": "^1.10"
+        "composer/composer": "^1.10.23"
     }
 }
